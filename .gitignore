@@ -1,0 +1,19 @@
+# Arquivos originais enviados pelo cliente (fotos e vídeos sem tratamento).
+# Ficam apenas na máquina local: as versões otimizadas estão em assets/.
+_fontes/
+
+# Sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Vercel
+.vercel
+
+# Despejos do Git Bash no Windows
+*.stackdump

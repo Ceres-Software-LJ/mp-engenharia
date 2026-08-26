@@ -1,0 +1,8 @@
+# Normaliza as quebras de linha no repositório (evita ruído entre Windows e Linux)
+* text=auto eol=lf
+
+# Binários: nunca converter
+*.jpg  binary
+*.png  binary
+*.svg  text eol=lf
+*.mp4  binary
