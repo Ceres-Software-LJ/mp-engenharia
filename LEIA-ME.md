@@ -131,12 +131,36 @@ por:
 
 ## Pendências antes de divulgar
 
+### Números que precisam ser confirmados pela MP
+
+Cinco trechos do site trazem números que eu **não tinha como verificar**. Estão
+marcados no código com o comentário `CONFIRMAR`. Para achar todos de uma vez:
+
+```bash
+grep -n "CONFIRMAR" index.html
+```
+
+| Onde | O que confirmar |
+|------|-----------------|
+| Credenciais do topo | O número **43 avaliações** — confira o total real no perfil do Google Meu Negócio |
+| Nota abaixo do botão | **"Respondemos em até 2 horas úteis"** — só mantenha se a MP cumprir todo dia útil. Promessa de prazo que falha destrói mais confiança do que a ausência dela |
+| FAQ · preço | O **modelo de cobrança** de projeto (por m²?) e de obra (percentual?) |
+| FAQ · prazo | As três **faixas de prazo**: projeto, aprovação e obra |
+| FAQ · visitas | A **frequência de visita** que a equipe consegue sustentar de fato |
+
+> As estrelas dos depoimentos estão todas como 5. As avaliações que recebi não vinham
+> com a nota, só com o texto — todos elogiosos. Vale conferir no Google se alguma
+> não é 5 estrelas.
+
+### Outros itens
+
 | # | Item | Onde |
 |---|------|------|
 | 1 | **Domínio real** nas tags de SEO | `index.html` → `canonical` e `og:url`; também em `robots.txt` e `sitemap.xml` |
-| 2 | **Link do Google Meu Negócio** no botão de avaliações | `index.html` → "Ver todas as avaliações no Google" |
+| 2 | **Link do Google Meu Negócio** | Aparece em **dois** lugares: faixa de prova social e seção de avaliações |
 | 3 | **Logo em vetor** (SVG ou PDF) | O logo atual foi extraído de um JPG de 150×150. Funciona, mas um SVG renderiza mais nítido — veja abaixo |
-| 4 | Fotos dos engenheiros (opcional) | `assets/img/` |
+| 4 | **Fotos dos engenheiros** | Hoje aparecem as iniciais num quadrado. Em negócio de confiança, foto de rosto converte |
+| 5 | **Dados das obras da galeria** | Legendas ganham força com metragem, bairro e prazo: "Sobrado 320 m² · Carandá · entregue em 11 meses" |
 
 ### Sobre o logo
 O arquivo enviado (`LOGO OFICIAL.jpg`) tinha 150×150 pixels com fundo cinza.

@@ -195,8 +195,11 @@
           var reduce = context.conditions.reduce;
           if (reduce) return;
 
-          // No celular o pin é mais curto para não prender a rolagem
-          var pinLength = isDesktop ? '+=95%' : '+=45%';
+          // No celular o vídeo não carrega (economia de dados), então fixar a tela
+          // só atrasaria o primeiro conteúdo. O efeito fica só no desktop.
+          if (!isDesktop) return;
+
+          var pinLength = '+=95%';
 
           var pinTl = gsap.timeline({
             scrollTrigger: {
@@ -230,8 +233,8 @@
      ======================================================================== */
   var grupos = [
     { sel: '.section-head > *', y: 22, stagger: 0.08 },
+    { sel: '.proof-quotes li', y: 18, stagger: 0.09 },
     { sel: '.pain', y: 30, stagger: 0.09 },
-    { sel: '.bridge', y: 24, stagger: 0 },
     { sel: '.svc', y: 34, stagger: 0.08 },
     { sel: '.svc-cta', y: 22, stagger: 0 },
     { sel: '.about-copy > *', y: 22, stagger: 0.07 },

@@ -54,7 +54,7 @@
   --shell:      1240px;
   --shell-narrow: 880px;
   --gutter:     clamp(20px, 5vw, 48px);
-  --section-y:  clamp(72px, 9vw, 132px);
+  --section-y:  clamp(60px, 7vw, 96px);
   --header-h:   76px;
   --radius:     2px;
 
@@ -437,7 +437,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: clamp(32px, 4.5vw, 52px);
+  /* A nota logo abaixo (.cta-note) é quem carrega o respiro até as credenciais */
+  margin-bottom: 14px;
 }
 
 /* Faixa de credenciais */
@@ -516,6 +517,90 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   0%   { transform: translateY(-100%); }
   55%  { transform: translateY(0); }
   100% { transform: translateY(100%); }
+}
+
+/* ==========================================================================
+   06b. FAIXA DE PROVA SOCIAL (logo abaixo do topo)
+   Banda clara e compacta: depois do hero escuro, funciona como um
+   "recibo" de credibilidade antes de qualquer descrição de serviço.
+   ========================================================================== */
+.proof {
+  position: relative;
+  background: var(--paper-pure);
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(26px, 3.2vw, 40px);
+}
+.proof-inner {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 2.4fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.proof-score { display: grid; gap: 6px; }
+.proof-score .stars {
+  color: var(--gold);
+  font-size: 1.05rem;
+  letter-spacing: .16em;
+  margin: 0;
+}
+.proof-count { margin: 0; font-size: .92rem; color: var(--gray); }
+.proof-count strong {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+.proof-link {
+  justify-self: start;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: border-color .25s var(--ease);
+}
+.proof-link:hover { border-color: var(--ink); }
+
+.proof-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 34px);
+}
+.proof-quotes li {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding-left: clamp(18px, 2.4vw, 30px);
+  border-left: 1px solid var(--line);
+}
+.proof-quotes p {
+  margin: 0;
+  font-size: .93rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.proof-quotes cite {
+  font-family: var(--font-mono);
+  font-size: .64rem;
+  font-style: normal;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Nota logo abaixo do botão principal · remove atrito */
+.cta-note {
+  margin: 0 0 clamp(30px, 4vw, 46px);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: rgba(249,249,249,.55);
 }
 
 /* ==========================================================================
@@ -602,17 +687,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--gray);
   margin: 0;
 }
-
-.bridge {
-  max-width: 78ch;
-  margin: clamp(40px, 5vw, 60px) 0 0;
-  padding-left: clamp(22px, 3vw, 34px);
-  border-left: 2px solid var(--ink);
-  font-size: clamp(1.02rem, 1.4vw, 1.22rem);
-  line-height: 1.62;
-  color: var(--gray);
-}
-.bridge strong { color: var(--ink); font-weight: 700; }
 
 /* ==========================================================================
    09. SERVIÇOS
@@ -1459,6 +1533,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .proof-inner { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .proof-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* No celular, a terceira frase sai: duas bastam para provar */
+  .proof-quotes li:nth-child(3) { display: none; }
+}
+
+@media (max-width: 560px) {
+  .proof-quotes { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .proof-quotes li:nth-child(3) { display: grid; }
+  .proof-quotes li:nth-child(2) ~ li { display: none; }
 }
 
 /* ---- Navegação mobile ---- */
