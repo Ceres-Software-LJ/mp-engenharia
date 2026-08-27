@@ -259,8 +259,9 @@
 <!-- ============================================================
      B. HERO
      VÍDEO DE FUNDO · assets/video/hero-obra.mp4
-     O vídeo fica FIXO na tela enquanto o usuário rola (GSAP
-     ScrollTrigger pin) e só então a próxima seção entra.
+     No desktop o vídeo fica FIXO na tela enquanto o usuário rola
+     (GSAP ScrollTrigger pin) e só então a próxima seção entra.
+     No celular roda uma versão mais leve, sem o efeito de fixação.
      Para trocar o vídeo, substitua o arquivo mantendo o nome.
      ============================================================ -->
 <section class="hero" id="hero" aria-label="Apresentação">
@@ -269,7 +270,8 @@
          Até lá aparece o poster, que já vem pré-carregado. Isso libera
          banda para o texto e o CSS, e melhora a nota de velocidade. -->
     <video class="hero-video" muted loop playsinline preload="none"
-           data-lazy-video="assets/video/hero-obra.mp4"></video>
+           data-lazy-video="assets/video/hero-obra.mp4"
+           data-lazy-video-mobile="assets/video/hero-obra-mobile.mp4"></video>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
   </div>
@@ -914,7 +916,8 @@
 <section class="video-band" aria-label="A entrega da obra">
   <div class="video-band-media" aria-hidden="true">
     <video class="band-video" muted loop playsinline preload="none"
-           data-lazy-video="assets/video/entrega.mp4"></video>
+           data-lazy-video="assets/video/entrega.mp4"
+           data-lazy-video-mobile="assets/video/entrega-mobile.mp4"></video>
     <div class="video-band-overlay"></div>
   </div>
 

@@ -4,7 +4,7 @@ Landing page estática, responsiva e otimizada para conversão via WhatsApp.
 Sem build, sem npm, sem framework: basta abrir `index.html` ou publicar a pasta.
 
 **Stack:** HTML semântico + CSS puro + JavaScript com [GSAP](https://gsap.com)
-(ScrollTrigger e SplitText) hospedado no próprio projeto.
+(ScrollTrigger) hospedado no próprio projeto.
 
 ---
 
@@ -17,7 +17,7 @@ robots.txt / sitemap.xml     SEO
 
 assets/css/style.css         Design system, cores, tipografia, responsivo
 assets/js/main.js            Animações e interações (comentado por módulo)
-assets/js/vendor/            GSAP 3.13 (gsap, ScrollTrigger, SplitText)
+assets/js/vendor/            GSAP 3.13 (gsap, ScrollTrigger)
 
 assets/img/logo-mp.png       Monograma oficial (branco, fundo transparente)
 assets/img/logo-mp-dark.png  Monograma em preto (para fundos claros)
@@ -25,8 +25,10 @@ assets/img/projeto-01..09    Fotos da galeria (1200×900)
 assets/img/hero-poster.jpg   Primeiro quadro do vídeo do topo
 assets/img/og-*.jpg          Imagem de compartilhamento em redes sociais
 
-assets/video/hero-obra.mp4   Vídeo do topo (fica fixo enquanto rola)
-assets/video/entrega.mp4     Vídeo da seção "A entrega" (loop contínuo)
+assets/video/hero-obra.mp4          Vídeo do topo, 1080p (desktop)
+assets/video/hero-obra-mobile.mp4   Mesmo vídeo em 720p (celular)
+assets/video/entrega.mp4            Vídeo da seção "A entrega", 1080p
+assets/video/entrega-mobile.mp4     Mesmo vídeo em 720p
 
 _fontes/                     Originais enviados pelo cliente (fora do Git)
 ```
@@ -37,8 +39,8 @@ _fontes/                     Originais enviados pelo cliente (fora do Git)
 
 | Onde | O que acontece |
 |------|----------------|
-| **Topo (hero)** | O título entra linha a linha (SplitText) e o vídeo se aproxima lentamente |
-| **Vídeo do topo** | Fica **fixo na tela** enquanto o usuário rola; o texto sobe e some, e só então a próxima seção entra |
+| **Topo (hero)** | O título sobe de dentro de máscaras, linha por linha. É **CSS puro**, de propósito: se dependesse do JavaScript, a nota de velocidade do Google despencaria |
+| **Vídeo do topo** | No desktop fica **fixo na tela** enquanto o usuário rola: o texto sobe e some, e só então a próxima seção entra. No celular roda normalmente, sem fixação |
 | **Entrada das seções** | Blocos sobem e aparecem em cascata quando entram na tela |
 | **Filetes dourados** | A linha de 1px de cada seção se desenha da esquerda para a direita |
 | **Etapas** | Um trilho vertical dourado se preenche conforme você lê, e o número da etapa atual acende |
@@ -50,8 +52,9 @@ _fontes/                     Originais enviados pelo cliente (fora do Git)
 | **Barra do topo** | Fio dourado indicando o progresso de leitura |
 
 Tudo respeita **"reduzir movimento"** do sistema operacional: quem ativa essa
-opção vê a página inteira, estática. Se o GSAP falhar, o conteúdo aparece
-normalmente após 2,5 segundos.
+opção vê a página inteira, estática e sem vídeo. Se o GSAP não carregar, a
+abertura do topo continua funcionando (é CSS) e o resto do conteúdo aparece
+normalmente.
 
 ---
 
@@ -89,8 +92,13 @@ Concentradas no topo do `assets/css/style.css`, no bloco `:root`:
 Trocar um valor ali muda a cor no site inteiro.
 
 ### Trocar os vídeos
-Substitua os arquivos em `assets/video/` **mantendo os mesmos nomes**.
-Recomendado: 1920×1080, 10 a 20 segundos, **sem áudio**, até 3 MB.
+Cada vídeo tem **duas versões**: a normal (1080p) e a `-mobile` (720p, bem mais
+leve). Substitua mantendo os mesmos nomes. Recomendado: 10 a 20 segundos, **sem
+áudio**. Para gerar a versão de celular a partir da normal:
+
+```bash
+ffmpeg -i assets/video/hero-obra.mp4 -vf scale=1280:720 -c:v libx264 -crf 31 \n  -preset slow -pix_fmt yuv420p -an -movflags +faststart \n  assets/video/hero-obra-mobile.mp4
+```
 
 Para gerar a imagem de fallback (exibida antes do vídeo carregar):
 
@@ -243,8 +251,8 @@ devagar** — de propósito, o pior caso realista de um celular no Brasil.
 
 | Métrica | Antes | Depois | Meta do Google |
 |---|---|---|---|
-| LCP no celular | 4.132 ms | **~2.620 ms** | < 2.500 ms |
-| Peso baixado no celular | 438 KB | **195 KB** | — |
+| LCP no celular | 4.132 ms | **~2.730 ms** | < 2.500 ms |
+| Peso baixado no celular | 438 KB | **195 KB** + vídeo sob demanda | — |
 | CLS (salto de layout) | 0,05 | **0,0008** | < 0,1 |
 | Conexões a terceiros | 1 | **0** | — |
 
@@ -254,11 +262,13 @@ O que foi feito:
 - Fallback com métricas idênticas: a troca de fonte não desloca nada
 - A abertura do topo é **CSS puro**. Antes ela dependia de 145 KB de
   JavaScript carregarem, e era isso que travava a nota
-- Poster do topo virou fundo de CSS a partir de 760px: o celular deixou de
-  baixar 135 KB de uma imagem que nem chega a aparecer lá
+- Poster do topo virou fundo de CSS a partir de 760px, evitando baixar a
+  imagem de 1920px em tela pequena
 - Poster da seção de entrega ganhou versão de celular (116 KB → 30 KB)
 - Logo redimensionado para o tamanho real de exibição (32 KB → 10 KB)
-- Vídeos só começam a baixar depois da primeira pintura da tela
+- Vídeos em duas versões: 1080p no desktop e 720p no celular (664 KB e
+  540 KB). Só começam a baixar quando o navegador fica ocioso, depois da
+  primeira pintura — se baixarem antes, roubam banda do texto do topo
 - Sem CDN, sem analytics, sem dependência externa
 
 **Ainda ~120 ms acima da meta no pior caso.** Fechar essa diferença exige uma

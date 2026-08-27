@@ -467,78 +467,104 @@
   });
 
   /* ========================================================================
-     13. VÍDEOS · carregamento sob demanda e economia de bateria
+     13. VÍDEOS · carregamento sob demanda, com suporte a iPhone
+     ------------------------------------------------------------------------
+     O iOS só toca vídeo sem o usuário mandar se ele estiver com os
+     atributos "muted" e "playsinline". Mesmo assim o play() pode ser
+     recusado se o arquivo
+     ainda não tem dados suficientes — por isso tentamos de novo quando o
+     vídeo avisa que já dá para tocar, e uma última vez ao primeiro toque
+     na tela (cobre o Modo de Baixo Consumo, que bloqueia autoplay).
      ======================================================================== */
   var connection = navigator.connection || {};
   var economizarDados = connection.saveData === true;
+  var ehCelular = window.matchMedia('(max-width: 759px)').matches;
 
-  // -- Hero: não carrega em tela pequena nem no modo economia -----------
-  var heroVideo = $('.hero-video');
-  if (heroVideo) {
-    if (reduceMotion || window.innerWidth < 760 || economizarDados) {
-      heroVideo.remove();
-    } else {
-      // Só baixa depois que a página terminou de carregar: assim o vídeo
-      // não disputa banda com o texto e o CSS na primeira pintura.
-      var iniciarVideo = function () {
-        if (heroVideo.src) return;
-        heroVideo.src = heroVideo.getAttribute('data-lazy-video');
-        heroVideo.load();
-        var p = heroVideo.play();
-        if (p && p.catch) p.catch(function () {});
-      };
-
-      if (document.readyState === 'complete') {
-        setTimeout(iniciarVideo, 200);
-      } else {
-        window.addEventListener('load', function () { setTimeout(iniciarVideo, 200); });
-      }
-
-      // Pausa quando o topo sai da tela (economiza bateria e processamento)
-      if (hasScrollTrigger) {
-        ScrollTrigger.create({
-          trigger: hero,
-          start: 'top bottom',
-          end: 'bottom top',
-          onToggle: function (self) {
-            if (!heroVideo.src) return;
-            if (self.isActive) {
-              var p = heroVideo.play();
-              if (p && p.catch) p.catch(function () {});
-            } else {
-              heroVideo.pause();
-            }
-          }
-        });
-      }
-    }
+  function tocar(video) {
+    var tentativa = video.play();
+    if (tentativa && tentativa.catch) tentativa.catch(function () {});
   }
 
-  // -- Vídeo da entrega: só baixa quando está prestes a aparecer --------
-  var bandVideoEl = $('.band-video');
-  if (bandVideoEl) {
-    var fonte = bandVideoEl.getAttribute('data-lazy-video');
-    var podeTocar = !reduceMotion && !economizarDados && window.innerWidth >= 760;
+  function prepararVideo(video, opcoes) {
+    if (!video) return null;
 
-    if (fonte && podeTocar && 'IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            if (bandVideoEl.src) bandVideoEl.pause();
-            return;
-          }
-          if (!bandVideoEl.src) {
-            bandVideoEl.src = fonte;   // o poster segue visível até o primeiro quadro
-            bandVideoEl.load();
-          }
-          var p = bandVideoEl.play();
-          if (p && p.catch) p.catch(function () {});
-        });
-      }, { rootMargin: '300px 0px' });
+    // Sem vídeo para quem pediu menos movimento ou está economizando dados:
+    // o poster (definido no CSS) continua aparecendo no lugar.
+    if (reduceMotion || economizarDados) { video.remove(); return null; }
 
-      observer.observe(bandVideoEl);
+    // Reforça os atributos que o iOS exige, caso o HTML seja editado depois
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    var fonte = (ehCelular && video.getAttribute('data-lazy-video-mobile')) ||
+                video.getAttribute('data-lazy-video');
+
+    function carregar() {
+      if (video.src || !fonte) return;
+      video.src = fonte;
+      video.load();
+      tocar(video);
     }
-    // Sem vídeo, o poster permanece como imagem de fundo da seção
+
+    // Se o play for recusado por falta de dados, tenta de novo quando houver
+    video.addEventListener('canplay', function () { if (video.paused) tocar(video); });
+    // Último recurso: primeiro toque do usuário na página
+    document.addEventListener('touchstart', function reTocar() {
+      if (video.src && video.paused) tocar(video);
+      document.removeEventListener('touchstart', reTocar);
+    }, { passive: true, once: true });
+
+    // No celular esperamos o navegador ficar ocioso antes de puxar o vídeo.
+    // Baixá-lo cedo demais rouba banda da fonte e do texto do topo, e é
+    // justamente o texto do topo que o Google cronometra. O poster fica
+    // visível nesse intervalo, então não há buraco na tela.
+    function agendar() {
+      if (!ehCelular) return setTimeout(carregar, 150);
+      if (window.requestIdleCallback) return requestIdleCallback(carregar, { timeout: 2500 });
+      setTimeout(carregar, 1500);
+    }
+
+    if (opcoes.aoCarregar) {
+      if (document.readyState === 'complete') agendar();
+      else window.addEventListener('load', agendar);
+    }
+
+    return { video: video, carregar: carregar };
+  }
+
+  // -- Vídeo do topo: começa logo após a primeira pintura --------------------
+  var heroCtrl = prepararVideo($('.hero-video'), { aoCarregar: true });
+
+  if (heroCtrl && hasScrollTrigger) {
+    ScrollTrigger.create({
+      trigger: hero,
+      start: 'top bottom',
+      end: 'bottom top',
+      onToggle: function (self) {
+        if (!heroCtrl.video.src) return;
+        self.isActive ? tocar(heroCtrl.video) : heroCtrl.video.pause();
+      }
+    });
+  }
+
+  // -- Vídeo da entrega: só baixa quando está chegando na tela ---------------
+  var bandaCtrl = prepararVideo($('.band-video'), { aoCarregar: false });
+
+  if (bandaCtrl && 'IntersectionObserver' in window) {
+    var obsBanda = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (e.isIntersecting) {
+          bandaCtrl.carregar();
+          tocar(bandaCtrl.video);
+        } else if (bandaCtrl.video.src) {
+          bandaCtrl.video.pause();
+        }
+      });
+    }, { rootMargin: '400px 0px' });
+    obsBanda.observe(bandaCtrl.video);
   }
 
   /* ========================================================================
