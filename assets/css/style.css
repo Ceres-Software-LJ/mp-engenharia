@@ -1,4 +1,86 @@
 /* ==========================================================================
+   00. TIPOGRAFIA · arquivos hospedados no próprio projeto
+   --------------------------------------------------------------------------
+   Outfit e Manrope são fontes VARIÁVEIS: um único arquivo cobre todos os
+   pesos, o que reduziu o peso das fontes de 199 KB para cerca de 82 KB.
+   Ficam aqui dentro (e não em um arquivo separado) para economizar uma
+   requisição no carregamento — o que pesa em conexão de celular.
+   Para regenerar, veja "Fontes" no LEIA-ME.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-500-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/manrope-400-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/manrope-400-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/outfit-300-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/outfit-300-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
    MP ENGENHARIA E PROJETOS · Landing Page
    Direção visual: minimalismo estrutural / desenho técnico
    --------------------------------------------------------------------------
@@ -24,6 +106,32 @@
    19. Responsivo
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   FONTES DE ESPERA COM AS MESMAS MEDIDAS
+   Enquanto Outfit e Manrope carregam, o navegador mostra Arial. Sem ajuste,
+   a troca faz o texto "pular" (o Google penaliza isso como CLS) e obriga uma
+   repintura que atrasa a nota de velocidade.
+   Os percentuais abaixo foram calculados a partir das métricas reais de cada
+   arquivo: com eles, Arial ocupa exatamente o mesmo espaço, e a troca fica
+   imperceptível.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Outfit Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  size-adjust: 100.85%;
+  ascent-override: 99.16%;
+  descent-override: 25.78%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  size-adjust: 103.78%;
+  ascent-override: 102.72%;
+  descent-override: 28.91%;
+  line-gap-override: 0%;
+}
+
 /* ==========================================================================
    01. TOKENS · EDITE AQUI PARA MUDAR A IDENTIDADE VISUAL
    ========================================================================== */
@@ -46,8 +154,8 @@
   --wa-glow:    #25D366;   /* Brilho / pulso do botão flutuante */
 
   /* Tipografia */
-  --font-title: "Outfit", "Montserrat", system-ui, sans-serif;
-  --font-body:  "Manrope", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-title: "Outfit", "Outfit Fallback", system-ui, sans-serif;
+  --font-body:  "Manrope", "Manrope Fallback", system-ui, sans-serif;
   --font-mono:  "IBM Plex Mono", ui-monospace, "Courier New", monospace;
 
   /* Medidas */
@@ -371,11 +479,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero-media { position: absolute; inset: 0; z-index: 0; }
 
-/* Fundo técnico de fallback (aparece quando não há vídeo) */
+/* Fundo do topo.
+   No celular o vídeo não roda, então fica só o gradiente — e a foto de
+   1920px sequer é baixada (eram 135 KB desperdiçados a cada visita).
+   A partir de 760px a foto entra como fundo, cobrindo o intervalo até
+   o vídeo terminar de carregar. */
 .hero-media {
   background:
     radial-gradient(ellipse 70% 55% at 70% 15%, #2A2A2A 0%, transparent 65%),
     linear-gradient(160deg, #1C1C1C 0%, #111111 55%, #0A0A0A 100%);
+}
+@media (min-width: 760px) {
+  .hero-media {
+    background:
+      linear-gradient(160deg, rgba(28,28,28,.4) 0%, rgba(10,10,10,.6) 100%),
+      url("../img/hero-poster.jpg") center / cover no-repeat #111111;
+  }
 }
 
 .hero-video {
@@ -1010,7 +1129,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   /* Folga vertical para o deslocamento de paralaxe não deixar bordas */
   inset: -10% 0;
   z-index: 0;
-  background: #0D0D0D center/cover no-repeat;
+  /* Versão leve (860px) para o celular, onde o vídeo não roda */
+  background: url("../img/entrega-poster-sm.jpg") center / cover no-repeat #0D0D0D;
+}
+@media (min-width: 760px) {
+  .video-band-media {
+    background-image: url("../img/entrega-poster.jpg");
+  }
 }
 .band-video {
   width: 100%;
@@ -1480,16 +1605,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    não "pisque" antes de a animação começar.
    ========================================================================== */
 
-/* Esconde só o que é animado na abertura. A classe .js-hide é adicionada
-   por um script no <head> e removida assim que o GSAP assume — ou após
-   2,5s, caso o GSAP não carregue. */
-.js-hide .hero-title,
-.js-hide [data-hero="fade"],
-.js-hide [data-hero="stats"] > div,
-.js-hide .scroll-cue { opacity: 0; }
+/* --------------------------------------------------------------------------
+   ABERTURA DO TOPO · CSS puro, sem depender do JavaScript
+   O texto do topo é o maior elemento da tela — é ele que o Google cronometra
+   como LCP. Animar por CSS faz a pintura acontecer imediatamente, em vez de
+   esperar o GSAP baixar e executar.
 
-/* Linhas do título divididas pelo SplitText */
-.hero-line { will-change: transform; }
+   Usamos "backwards" (e não "forwards"): durante o atraso o elemento fica no
+   estado inicial e, ao terminar, volta ao estilo normal. Assim o GSAP consegue
+   controlar a opacidade depois, no efeito de vídeo fixo.
+   -------------------------------------------------------------------------- */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+@keyframes hero-unmask {
+  from { transform: translateY(105%); }
+}
+
+.hero-inner > *          { animation: hero-rise .7s var(--ease) backwards; }
+.hero-inner > *:nth-child(1) { animation-delay: .05s; }
+.hero-inner > .hero-title    { animation: none; }   /* revelado pelas máscaras */
+.hero-inner > *:nth-child(3) { animation-delay: .34s; }
+.hero-inner > *:nth-child(4) { animation-delay: .44s; }
+.hero-inner > *:nth-child(5) { animation-delay: .52s; }
+.hero-inner > *:nth-child(6) { animation-delay: .60s; }
+
+/* Título: cada bloco sobe de dentro da própria máscara */
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line > span {
+  display: block;
+  animation: hero-unmask .9s var(--ease) backwards;
+}
+.hero-title .line:nth-child(1) > span { animation-delay: .12s; }
+.hero-title .line:nth-child(2) > span { animation-delay: .22s; }
+
+.scroll-cue { animation: hero-rise .7s var(--ease) .8s backwards; }
 
 /* Filete de 1px que se desenha quando a seção entra na tela */
 .rule-draw {
@@ -1657,11 +1807,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
-  /* Nada fica escondido esperando animação */
-  .js-hide .hero-title,
-  .js-hide [data-hero="fade"],
-  .js-hide [data-hero="stats"] > div,
-  .js-hide .scroll-cue { opacity: 1; }
+  /* Sem animação de entrada: tudo já visível */
+  .hero-inner > *, .hero-title .line > span, .scroll-cue { animation: none; }
 
   .hero-video, .band-video { display: none; }
   .scroll-progress { display: none; }

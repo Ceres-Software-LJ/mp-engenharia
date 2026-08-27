@@ -1,7 +1,7 @@
 /* ==========================================================================
    MP ENGENHARIA E PROJETOS · Scripts da landing page
    --------------------------------------------------------------------------
-   Animações com GSAP + ScrollTrigger + SplitText.
+   Animações com GSAP + ScrollTrigger.
    Se o GSAP não carregar, a página continua legível e navegável: todos os
    conteúdos ficam visíveis e os links de WhatsApp seguem funcionando.
 
@@ -9,7 +9,7 @@
    01. Base e detecção de recursos
    02. Header fixo, menu mobile e navegação
    03. Barra de progresso de leitura
-   04. Hero: abertura animada + vídeo fixo no scroll (pin)
+   04. Hero: vídeo fixo durante a rolagem (a abertura é feita em CSS)
    05. Revelação das seções ao rolar
    06. Linhas técnicas que se desenham
    07. Etapas: linha do tempo com progresso
@@ -29,7 +29,6 @@
      ======================================================================== */
   var hasGsap = typeof window.gsap !== 'undefined';
   var hasScrollTrigger = hasGsap && typeof window.ScrollTrigger !== 'undefined';
-  var hasSplitText = hasGsap && typeof window.SplitText !== 'undefined';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var DESKTOP = '(min-width: 861px)';
@@ -41,7 +40,6 @@
 
   if (hasScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
-    if (hasSplitText) gsap.registerPlugin(SplitText);
     gsap.defaults({ ease: 'power3.out', duration: 0.9 });
     // Marca o documento para que o CSS esconda os elementos que serão animados
     document.documentElement.classList.add('gsap-ready');
@@ -132,58 +130,14 @@
   }
 
   /* ========================================================================
-     04. HERO · ABERTURA ANIMADA + VÍDEO FIXO NO SCROLL
+     04. HERO · VÍDEO FIXO DURANTE A ROLAGEM
      ======================================================================== */
   var hero = document.getElementById('hero');
 
   if (hero && hasGsap) {
-    var heroTitle = $('[data-hero="split"]', hero);
-    var split = null;
 
-    // -- Abertura: título linha a linha, depois os demais elementos --------
-    function playIntro() {
-      var fades = $$('[data-hero="fade"]', hero);
-      var stats = $$('[data-hero="stats"] > div', hero);
-      // A <dl> das credenciais não entra na lista: quem anima são os filhos dela
-      var todos = [heroTitle]
-        .concat(Array.prototype.slice.call(fades))
-        .concat(Array.prototype.slice.call(stats))
-        .filter(Boolean);
-
-      // Estado inicial em estilo inline: vence a regra .js-hide do CSS
-      gsap.set(todos, { autoAlpha: 0 });
-      document.documentElement.classList.remove('js-hide');
-
-      if (reduceMotion) {
-        gsap.set(todos, { autoAlpha: 1, y: 0 });
-        return;
-      }
-
-      var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      // Título: SplitText com máscara por linha (efeito de cortina)
-      if (hasSplitText && heroTitle) {
-        split = SplitText.create(heroTitle, { type: 'lines', mask: 'lines', linesClass: 'hero-line' });
-        gsap.set(heroTitle, { autoAlpha: 1 });
-        tl.fromTo(split.lines, { yPercent: 115 }, { yPercent: 0, duration: 1.05, stagger: 0.09 }, 0.15);
-      } else if (heroTitle) {
-        tl.fromTo(heroTitle, { y: 30 }, { y: 0, autoAlpha: 1, duration: 1 }, 0.15);
-      }
-
-      tl.fromTo(fades, { y: 24 }, { y: 0, autoAlpha: 1, duration: 0.85, stagger: 0.12 }, 0.5)
-        .fromTo(stats, { y: 20 }, { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.08 }, 0.85)
-        .fromTo('.scroll-cue', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.1);
-
-      // Aproximação lenta do vídeo, dando vida ao primeiro quadro
-      tl.from('.hero-video', { scale: 1.14, duration: 2.4, ease: 'power2.out' }, 0);
-    }
-
-    // Espera as fontes carregarem para o SplitText medir as linhas corretamente
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(playIntro);
-    } else {
-      playIntro();
-    }
+    // A abertura do topo é feita em CSS (assets/css/style.css).
+    // Aqui fica só o efeito de vídeo fixo durante a rolagem.
 
     // -- Vídeo fixo enquanto rola, depois libera a próxima seção -----------
     if (hasScrollTrigger) {
@@ -222,7 +176,6 @@
             .to('.hero-grid', { autoAlpha: 0, ease: 'none' }, 0)
             .to('.scroll-cue', { autoAlpha: 0, duration: 0.2, ease: 'none' }, 0);
 
-          return function () { if (split) { split.revert(); split = null; } };
         });
     }
   }
@@ -524,20 +477,40 @@
   if (heroVideo) {
     if (reduceMotion || window.innerWidth < 760 || economizarDados) {
       heroVideo.remove();
-    } else if (hasScrollTrigger) {
-      ScrollTrigger.create({
-        trigger: hero,
-        start: 'top bottom',
-        end: 'bottom top',
-        onToggle: function (self) {
-          if (self.isActive) {
-            var p = heroVideo.play();
-            if (p && p.catch) p.catch(function () {});
-          } else {
-            heroVideo.pause();
+    } else {
+      // Só baixa depois que a página terminou de carregar: assim o vídeo
+      // não disputa banda com o texto e o CSS na primeira pintura.
+      var iniciarVideo = function () {
+        if (heroVideo.src) return;
+        heroVideo.src = heroVideo.getAttribute('data-lazy-video');
+        heroVideo.load();
+        var p = heroVideo.play();
+        if (p && p.catch) p.catch(function () {});
+      };
+
+      if (document.readyState === 'complete') {
+        setTimeout(iniciarVideo, 200);
+      } else {
+        window.addEventListener('load', function () { setTimeout(iniciarVideo, 200); });
+      }
+
+      // Pausa quando o topo sai da tela (economiza bateria e processamento)
+      if (hasScrollTrigger) {
+        ScrollTrigger.create({
+          trigger: hero,
+          start: 'top bottom',
+          end: 'bottom top',
+          onToggle: function (self) {
+            if (!heroVideo.src) return;
+            if (self.isActive) {
+              var p = heroVideo.play();
+              if (p && p.catch) p.catch(function () {});
+            } else {
+              heroVideo.pause();
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
 

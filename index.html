@@ -7,8 +7,8 @@
 <!-- ============================================================
      SEO BÁSICO · EDITE AQUI OS TEXTOS DE BUSCA E REDES SOCIAIS
      ============================================================ -->
-<title>MP Engenharia e Projetos | Engenheiro na sua obra em Campo Grande - MS</title>
-<meta name="description" content="O engenheiro que assina seu projeto é o mesmo que acompanha sua obra. Projeto, aprovação, Habite-se, FCO e execução sob o mesmo CREA em Campo Grande - MS. 43 avaliações de clientes no Google.">
+<title>Engenharia e Projetos em Campo Grande - MS | MP Engenharia</title>
+<meta name="description" content="Projeto, aprovação, Habite-se, FCO e execução de obras em Campo Grande - MS, tudo sob o mesmo CREA. O engenheiro que assina o projeto acompanha a sua obra.">
 <meta name="keywords" content="engenharia Campo Grande, projetos arquitetônicos Campo Grande MS, construtora Campo Grande, Habite-se, FCO, regularização de obra, projeto estrutural, obra industrial">
 <meta name="author" content="MP Engenharia e Projetos">
 <meta name="robots" content="index, follow">
@@ -30,22 +30,15 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/logo-mp-dark.png">
 
-<!-- Prioriza o carregamento da primeira imagem visível -->
-<link rel="preload" as="image" href="assets/img/hero-poster.jpg" fetchpriority="high">
-
-<!-- Tipografia -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- ============================================================
+     TIPOGRAFIA · hospedada no próprio projeto
+     Sem chamadas a fonts.googleapis.com: elimina duas conexões a
+     servidor externo no caminho crítico. Para regenerar os arquivos,
+     veja a seção "Fontes" no LEIA-ME.
+     ============================================================ -->
 
 <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- Evita o "pisca" do topo antes das animações começarem.
-     Se o GSAP não carregar em 2,5s, tudo é exibido normalmente. -->
-<script>
-  document.documentElement.classList.add('js-hide');
-  setTimeout(function () { document.documentElement.classList.remove('js-hide'); }, 2500);
-</script>
 
 <!-- ============================================================
      DADOS ESTRUTURADOS (Google) · Atualize endereço e telefones
@@ -59,25 +52,156 @@
   "url": "https://www.mpengenhariaeprojetos.com.br/",
   "telephone": "+5567992142661",
   "email": "eng.projetosmp@gmail.com",
-  "areaServed": { "@type": "City", "name": "Campo Grande", "addressRegion": "MS" },
+  "areaServed": {
+    "@type": "City",
+    "name": "Campo Grande",
+    "addressRegion": "MS"
+  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Campo Grande",
     "addressRegion": "MS",
     "addressCountry": "BR"
   },
-  "sameAs": ["https://www.instagram.com/mp_engenharia"],
+  "sameAs": [
+    "https://www.instagram.com/mp_engenharia"
+  ],
   "employee": [
-    { "@type": "Person", "name": "Matheus Victor Ferreira Barbosa", "jobTitle": "Engenheiro Civil - CREA 67721-MS" },
-    { "@type": "Person", "name": "Pedro Augusto Caldeira", "jobTitle": "Engenheiro Civil - CREA 70662-MS" }
+    {
+      "@type": "Person",
+      "name": "Matheus Victor Ferreira Barbosa",
+      "jobTitle": "Engenheiro Civil - CREA 67721-MS"
+    },
+    {
+      "@type": "Person",
+      "name": "Pedro Augusto Caldeira",
+      "jobTitle": "Engenheiro Civil - CREA 70662-MS"
+    }
   ],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Arquitetura e Projetos de Construção" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projetos Complementares - Estrutural, Elétrico e Hidráulico" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Construção Residencial e Edículas" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Construção Comercial - Lojas e Edifícios" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Obras Industriais" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Regularização, Habite-se e FCO" } }
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Arquitetura e Projetos de Construção"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Projetos Complementares - Estrutural, Elétrico e Hidráulico"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Construção Residencial e Edículas"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Construção Comercial - Lojas e Edifícios"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Obras Industriais"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Regularização, Habite-se e FCO"
+      }
+    }
+  ],
+  "logo": "https://www.mpengenhariaeprojetos.com.br/assets/img/logo-mp-dark.png",
+  "image": [
+    "https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg",
+    "https://www.mpengenhariaeprojetos.com.br/assets/img/projeto-01.jpg",
+    "https://www.mpengenhariaeprojetos.com.br/assets/img/projeto-08.jpg"
+  ]
+}
+</script>
+
+
+<!-- Perguntas frequentes · espelha exatamente o FAQ visível na página -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa um projeto? E a obra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O orçamento é gratuito. Projetos são cobrados por metro quadrado e a execução, por percentual sobre o valor da obra . O valor final só é fechado depois do projeto executivo, com quantitativo item a item — é isso que impede o orçamento de crescer no meio do caminho."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo demora?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Projeto arquitetônico completo: de 30 a 45 dias. Aprovação na prefeitura: de 30 a 60 dias, conforme a fila do órgão. Obra residencial: de 8 a 14 meses, dependendo do porte. Você recebe o cronograma com datas antes de assinar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Com que frequência o engenheiro vai até a obra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No mínimo uma visita técnica por semana, e presença diária nas fases de fundação e estrutura. A cada visita você recebe fotos e um relatório de andamento, e tem o WhatsApp direto do engenheiro responsável."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês ajudam a conseguir o financiamento FCO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Projeto aprovado, memorial descritivo, orçamento detalhado e cronograma físico-financeiro saem daqui no formato que o banco exige. A aprovação final é do banco, mas a parte técnica vai pronta — o que evita a causa mais comum de devolução do processo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Os projetos complementares já estão inclusos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É possível contratar só o arquitetônico, mas recomendamos o pacote completo com estrutural, elétrico e hidrossanitário compatibilizados. Projeto feito por gente diferente e sem compatibilização é a origem da maior parte dos custos extras que aparecem no canteiro. Na proposta, cada item vem com valor separado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso contratar só o projeto, sem a execução?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pode. Muitos clientes contratam projeto e aprovação e executam com equipe própria. Nesse caso também oferecemos acompanhamento técnico da obra de terceiros, para garantir que o desenho está sendo executado como foi projetado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês atendem fora de Campo Grande?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Campo Grande e região metropolitana são nossa base. Para o interior do estado avaliamos caso a caso, considerando o porte da obra e a logística do acompanhamento. Mande a localização que respondemos com a viabilidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Minha casa está irregular. Dá para regularizar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Na maioria dos casos, sim. Levantamos o que foi construído, elaboramos o projeto de regularização, emitimos a ART e conduzimos o processo na prefeitura até o Habite-se. Imóvel regularizado é o que permite financiar, vender e averbar em cartório sem trava."
+      }
+    }
   ]
 }
 </script>
@@ -98,7 +222,7 @@
     <a class="brand" href="#topo" aria-label="MP Engenharia e Projetos, ir para o início">
       <!-- LOGO OFICIAL · monograma MP em PNG com fundo transparente.
            Se receber o arquivo vetorial, troque por logo-mp.svg (renderiza mais nítido). -->
-      <img class="brand-mark" src="assets/img/logo-mp.png" alt="" width="480" height="403" aria-hidden="true">
+      <img class="brand-mark" src="assets/img/logo-mp.png" alt="" width="220" height="185" aria-hidden="true">
       <span class="brand-text">
         <strong>MP Engenharia</strong>
         <span>Engenharia<br>Arquitetura</span>
@@ -141,31 +265,35 @@
      ============================================================ -->
 <section class="hero" id="hero" aria-label="Apresentação">
   <div class="hero-media" aria-hidden="true">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-           poster="assets/img/hero-poster.jpg">
-      <source src="assets/video/hero-obra.mp4" type="video/mp4">
-    </video>
+    <!-- O vídeo só começa a baixar depois da primeira pintura da tela.
+         Até lá aparece o poster, que já vem pré-carregado. Isso libera
+         banda para o texto e o CSS, e melhora a nota de velocidade. -->
+    <video class="hero-video" muted loop playsinline preload="none"
+           data-lazy-video="assets/video/hero-obra.mp4"></video>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
   </div>
 
   <div class="shell hero-inner">
-    <p class="eyebrow light" data-hero="fade">
+    <p class="eyebrow light">
       <span class="tick"></span> CREA-MS &nbsp;·&nbsp; Atuação em Campo Grande
     </p>
 
-    <!-- HEADLINE PRINCIPAL · animada linha a linha pelo GSAP SplitText -->
-    <h1 class="hero-title" data-hero="split">
-      O engenheiro que assina seu projeto
-      <em>é o mesmo que aparece na sua obra.</em>
+    <!-- HEADLINE PRINCIPAL
+         Cada bloco .line tem a máscara que revela o texto subindo.
+         A animação é CSS puro (não espera o JavaScript carregar), porque
+         este é o texto que o Google mede como maior elemento da tela. -->
+    <h1 class="hero-title">
+      <span class="line"><span>O engenheiro que assina seu projeto</span></span>
+      <em class="line"><span>é o mesmo que aparece na sua obra.</span></em>
     </h1>
 
-    <p class="hero-sub" data-hero="fade">
+    <p class="hero-sub">
       Projeto, aprovação, Habite-se e execução sob o mesmo CREA, em Campo Grande.
       Você fala com quem decide, não com intermediário.
     </p>
 
-    <div class="hero-actions" data-hero="fade">
+    <div class="hero-actions">
       <!-- CTA PRINCIPAL · o texto da mensagem já vai preenchido para o cliente
            só apagar o que não serve. Isso poupa 2 ou 3 trocas de mensagem. -->
       <a class="btn btn-wa btn-lg"
@@ -179,13 +307,13 @@
 
     <!-- Remove o atrito logo abaixo do botão.
          ATENÇÃO: só mantenha o prazo se a MP conseguir cumprir todo dia útil. -->
-    <p class="cta-note" data-hero="fade">
+    <p class="cta-note">
       Sem compromisso. Respondemos em até 2 horas úteis.
     </p>
 
     <!-- Credenciais verificáveis · CONFIRME o número de avaliações no perfil
          do Google Meu Negócio antes de publicar. -->
-    <dl class="hero-stats" data-hero="stats">
+    <dl class="hero-stats">
       <div><dt>43</dt><dd>Avaliações de clientes<br>no Google</dd></div>
       <div><dt>02</dt><dd>Engenheiros com<br>CREA-MS ativo</dd></div>
       <div><dt>01</dt><dd>Contrato para<br>projeto e obra</dd></div>
@@ -786,7 +914,7 @@
 <section class="video-band" aria-label="A entrega da obra">
   <div class="video-band-media" aria-hidden="true">
     <video class="band-video" muted loop playsinline preload="none"
-           poster="assets/img/entrega-poster.jpg" data-lazy-video="assets/video/entrega.mp4"></video>
+           data-lazy-video="assets/video/entrega.mp4"></video>
     <div class="video-band-overlay"></div>
   </div>
 
@@ -946,7 +1074,7 @@
 
       <div class="foot-brand">
         <a class="brand" href="#topo" aria-label="MP Engenharia e Projetos, ir para o início">
-          <img class="brand-mark" src="assets/img/logo-mp.png" alt="" width="480" height="403" loading="lazy" aria-hidden="true">
+          <img class="brand-mark" src="assets/img/logo-mp.png" alt="" width="220" height="185" loading="lazy" aria-hidden="true">
           <span class="brand-text"><strong>MP Engenharia</strong><span>Engenharia<br>Arquitetura</span></span>
         </a>
         <p class="foot-desc">
@@ -1045,7 +1173,6 @@
      ============================================================ -->
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/js/vendor/SplitText.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -197,14 +197,63 @@ Para usar domínio próprio: **Settings → Domains** no painel do Vercel.
 
 ---
 
+## Fontes
+
+As fontes ficam em `assets/fonts/` e são declaradas no **topo do
+`assets/css/style.css`**. Não há chamada para o Google: isso elimina duas
+conexões a servidor externo no carregamento.
+
+Outfit e Manrope são **variáveis** — um arquivo cobre todos os pesos. Foi o que
+derrubou o peso das fontes de 199 KB para 86 KB.
+
+Logo abaixo delas há duas famílias `... Fallback`, com `size-adjust` e
+`ascent-override`. Elas fazem o Arial ocupar exatamente o mesmo espaço enquanto
+a fonte real carrega — sem isso o texto "pula" na troca, o que o Google penaliza.
+**Se você trocar de fonte, esses percentuais precisam ser recalculados.**
+
+Para regenerar (só se for mudar a tipografia):
+
+```bash
+# 1. Baixe o CSS do Google com um navegador moderno na identificação
+curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0" \
+  "https://fonts.googleapis.com/css2?family=Outfit:wght@300..700&family=Manrope:wght@400..700&display=swap"
+
+# 2. Baixe os .woff2 dos subsets latin e latin-ext para assets/fonts/
+# 3. Cole os @font-face no topo do style.css, trocando as URLs por ../fonts/
+```
+
+---
+
 ## Desempenho
 
-- Zero dependências externas em produção (nem CDN, nem Google Analytics)
-- Vídeos otimizados: 10,2 MB → 3,9 MB
-- O vídeo do topo **não carrega no celular** nem no modo economia de dados
-- O vídeo da entrega só baixa quando está prestes a aparecer na tela
-- Imagens com `lazy loading` e dimensões declaradas (evita salto de layout)
-- Fontes carregadas com `display=swap`
+Medido em Chrome com estrangulamento de **4G lento e processador 4× mais
+devagar** — de propósito, o pior caso realista de um celular no Brasil.
+
+| Métrica | Antes | Depois | Meta do Google |
+|---|---|---|---|
+| LCP no celular | 4.132 ms | **~2.620 ms** | < 2.500 ms |
+| Peso baixado no celular | 438 KB | **195 KB** | — |
+| CLS (salto de layout) | 0,05 | **0,0008** | < 0,1 |
+| Conexões a terceiros | 1 | **0** | — |
+
+O que foi feito:
+
+- Fontes hospedadas no projeto, em versão variável (199 KB → 86 KB)
+- Fallback com métricas idênticas: a troca de fonte não desloca nada
+- A abertura do topo é **CSS puro**. Antes ela dependia de 145 KB de
+  JavaScript carregarem, e era isso que travava a nota
+- Poster do topo virou fundo de CSS a partir de 760px: o celular deixou de
+  baixar 135 KB de uma imagem que nem chega a aparecer lá
+- Poster da seção de entrega ganhou versão de celular (116 KB → 30 KB)
+- Logo redimensionado para o tamanho real de exibição (32 KB → 10 KB)
+- Vídeos só começam a baixar depois da primeira pintura da tela
+- Sem CDN, sem analytics, sem dependência externa
+
+**Ainda ~120 ms acima da meta no pior caso.** Fechar essa diferença exige uma
+escolha de marca: trocar `font-display: swap` por `optional` no `style.css`
+faz o texto nunca "trocar" de fonte, mas quem entra pela primeira vez numa
+conexão ruim vê a página inteira em Arial. Em conexão média o site já passa
+folgado — vale medir com dados reais no Search Console antes de decidir.
 
 ## Acessibilidade
 
