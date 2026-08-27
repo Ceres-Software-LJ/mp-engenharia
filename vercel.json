@@ -4,7 +4,6 @@
   "trailingSlash": false,
   "headers": [
     {
-      "comment": "Fontes e bibliotecas com nome versionado: cache de um ano",
       "source": "/assets/(fonts|js/vendor)/(.*)",
       "headers": [
         {
@@ -14,7 +13,6 @@
       ]
     },
     {
-      "comment": "Fotos, vídeos, CSS e JS do site: cache de 1 dia. Assim, quando você trocar uma foto mantendo o mesmo nome, os visitantes veem a nova versão rapidamente.",
       "source": "/assets/(.*)",
       "headers": [
         {
@@ -24,7 +22,6 @@
       ]
     },
     {
-      "comment": "Cabeçalhos de segurança aplicados a todas as páginas",
       "source": "/(.*)",
       "headers": [
         {

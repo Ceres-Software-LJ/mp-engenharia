@@ -178,7 +178,19 @@ Ele aparece em **dois lugares**: header e rodapé.
 
 ## Publicação no Vercel
 
-O projeto já vem configurado (`vercel.json`). Como publicar:
+### O que o `vercel.json` faz
+
+O arquivo não aceita comentários — o Vercel valida o formato de forma estrita e
+recusa qualquer propriedade fora do padrão. A explicação de cada regra fica aqui:
+
+| Regra | O que faz |
+|---|---|
+| `/assets/(fonts\|js/vendor)/(.*)` | Cache de **1 ano**. São arquivos com nome versionado (a fonte `manrope-400-700-latin.woff2` nunca muda de conteúdo), então podem ficar guardados para sempre |
+| `/assets/(.*)` | Cache de **1 dia** para fotos, vídeos, CSS e JS. Assim, quando você trocar uma foto mantendo o mesmo nome, os visitantes veem a nova versão rapidamente |
+| `/(.*)` | Cabeçalhos de segurança em todas as páginas: bloqueia adivinhação de tipo de arquivo, incorporação do site em iframes de terceiros e acesso a câmera, microfone e localização |
+| `cleanUrls` | URLs sem `.html` no fim |
+
+### Como publicar
 
 1. Acesse [vercel.com/new](https://vercel.com/new) e entre com a conta do GitHub
 2. Escolha o repositório **mp-engenharia**
