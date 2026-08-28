@@ -7,9 +7,9 @@
 <!-- ============================================================
      SEO BÁSICO · EDITE AQUI OS TEXTOS DE BUSCA E REDES SOCIAIS
      ============================================================ -->
-<title>Engenharia e Projetos em Campo Grande - MS | MP Engenharia</title>
-<meta name="description" content="Projeto, aprovação, Habite-se, FCO e execução de obras em Campo Grande - MS, tudo sob o mesmo CREA. O engenheiro que assina o projeto acompanha a sua obra.">
-<meta name="keywords" content="engenharia Campo Grande, projetos arquitetônicos Campo Grande MS, construtora Campo Grande, Habite-se, FCO, regularização de obra, projeto estrutural, obra industrial">
+<title>Engenharia Civil e Arquitetura em Campo Grande - MS | MP</title>
+<meta name="description" content="Projeto arquitetônico, Habite-se, regularização, crédito FCO e construção residencial, comercial e industrial em Campo Grande - MS. Engenheiros com CREA-MS ativo.">
+<meta name="keywords" content="engenharia civil Campo Grande, engenheiro civil Campo Grande MS, projeto arquitetônico Campo Grande, construtora Campo Grande MS, Habite-se Campo Grande, regularização de imóvel Campo Grande, financiamento FCO Mato Grosso do Sul, projeto estrutural Campo Grande, galpão industrial Campo Grande, edícula Campo Grande">
 <meta name="author" content="MP Engenharia e Projetos">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.mpengenhariaeprojetos.com.br/">
@@ -19,12 +19,29 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="MP Engenharia e Projetos">
-<meta property="og:title" content="MP Engenharia e Projetos | O engenheiro que assina seu projeto é o mesmo que aparece na sua obra">
-<meta property="og:description" content="Projeto, aprovação, Habite-se e execução sob o mesmo CREA em Campo Grande - MS. Você fala com quem decide.">
+<meta property="og:title" content="Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia">
+<meta property="og:description" content="O engenheiro que assina seu projeto é o mesmo que aparece na sua obra. Projeto, Habite-se, FCO e execução em Campo Grande - MS.">
 <meta property="og:url" content="https://www.mpengenhariaeprojetos.com.br/">
 <!-- TROQUE pela imagem de compartilhamento (1200x630px) -->
-<meta property="og:image" content="assets/img/og-mp-engenharia.jpg">
+<meta property="og:image" content="https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Residência de alto padrão projetada pela MP Engenharia e Projetos em Campo Grande - MS">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia">
+<meta name="twitter:description" content="Projeto, Habite-se, crédito FCO e execução de obras em Campo Grande - MS, sob o mesmo CREA.">
+<meta name="twitter:image" content="https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg">
+
+<!-- Sinais geográficos. Não são fator de ranqueamento no Google, mas são
+     lidos por agregadores e por alguns rastreadores de IA para confirmar
+     onde a empresa atua. -->
+<meta name="geo.region" content="BR-MS">
+<meta name="geo.placename" content="Campo Grande, Mato Grosso do Sul">
+<meta name="geo.position" content="-20.4697;-54.6201">
+<meta name="ICBM" content="-20.4697, -54.6201">
+
+<!-- Resumo do negócio para rastreadores de IA (ver /llms.txt) -->
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo para assistentes de IA">
 
 <!-- Favicon -->
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -41,170 +58,385 @@
 
 
 <!-- ============================================================
-     DADOS ESTRUTURADOS (Google) · Atualize endereço e telefones
+     DADOS ESTRUTURADOS (Schema.org)
+     Um grafo único com entidades ligadas por @id: empresa, site,
+     página, os dois engenheiros com o CREA de cada um, o catálogo
+     de serviços e o FAQ. É o formato que o Google e os buscadores
+     com IA leem melhor para entender quem faz o quê, e onde.
+     Ao trocar de domínio, use Localizar e Substituir.
      ============================================================ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  "name": "MP Engenharia e Projetos",
-  "description": "Escritório de engenharia civil e arquitetura em Campo Grande - MS. Projetos, regularização, Habite-se, FCO e execução de obras residenciais, comerciais e industriais.",
-  "url": "https://www.mpengenhariaeprojetos.com.br/",
-  "telephone": "+5567992142661",
-  "email": "eng.projetosmp@gmail.com",
-  "areaServed": {
-    "@type": "City",
-    "name": "Campo Grande",
-    "addressRegion": "MS"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Campo Grande",
-    "addressRegion": "MS",
-    "addressCountry": "BR"
-  },
-  "sameAs": [
-    "https://www.instagram.com/mp_engenharia"
-  ],
-  "employee": [
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#site",
+      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "name": "MP Engenharia e Projetos",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#pagina",
+      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "name": "Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia",
+      "description": "Projeto arquitetônico, projetos complementares, aprovação na prefeitura, Habite-se, regularização e execução de obras em Campo Grande - MS, sob a mesma responsabilidade técnica.",
+      "isPartOf": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#site"
+      },
+      "about": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem",
+      "url": "https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Residência de alto padrão projetada pela MP Engenharia e Projetos em Campo Grande - MS"
+    },
+    {
+      "@type": [
+        "GeneralContractor",
+        "ProfessionalService"
+      ],
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa",
+      "name": "MP Engenharia e Projetos",
+      "alternateName": "MP Engenharia",
+      "description": "Escritório de engenharia civil e arquitetura em Campo Grande - MS. Faz projeto arquitetônico, projetos complementares, aprovação na prefeitura, Habite-se, regularização de imóveis, dossiê técnico para crédito FCO e execução de obras residenciais, comerciais e industriais, tudo sob a mesma responsabilidade técnica registrada no CREA-MS.",
+      "slogan": "O engenheiro que assina seu projeto é o mesmo que aparece na sua obra.",
+      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "logo": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#logo"
+      },
+      "image": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem"
+      },
+      "telephone": [
+        "+5567992142661",
+        "+5567981270814"
+      ],
+      "email": "eng.projetosmp@gmail.com",
+      "currenciesAccepted": "BRL",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Campo Grande",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Mato Grosso do Sul"
+          }
+        },
+        {
+          "@type": "State",
+          "name": "Mato Grosso do Sul"
+        }
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "name": "Campo Grande e região metropolitana",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": -20.4697,
+          "longitude": -54.6201
+        },
+        "geoRadius": 60000
+      },
+      "knowsLanguage": "pt-BR",
+      "knowsAbout": [
+        "Engenharia civil",
+        "Arquitetura",
+        "Projeto estrutural",
+        "Projeto elétrico",
+        "Projeto hidrossanitário",
+        "Habite-se",
+        "Regularização de imóveis",
+        "Alvará de construção",
+        "Financiamento FCO",
+        "Construção residencial",
+        "Obra comercial",
+        "Obra industrial",
+        "ART - Anotação de Responsabilidade Técnica"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/mp_engenharia"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.mpengenhariaeprojetos.com.br/#matheus"
+        },
+        {
+          "@id": "https://www.mpengenhariaeprojetos.com.br/#pedro"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de engenharia e arquitetura em Campo Grande - MS",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Projeto Arquitetônico e Aprovação na Prefeitura",
+              "description": "Estudo de viabilidade do terreno, planta baixa, cortes, fachadas e aprovação junto aos órgãos competentes de Campo Grande - MS.",
+              "serviceType": "Projeto Arquitetônico e Aprovação na Prefeitura",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Projetos Complementares: Estrutural, Elétrico e Hidráulico",
+              "description": "Cálculo estrutural dimensionado, projeto elétrico e de iluminação, hidráulico, esgoto e águas pluviais, compatibilizados entre si.",
+              "serviceType": "Projetos Complementares: Estrutural, Elétrico e Hidráulico",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Construção Residencial e Edículas",
+              "description": "Execução de casas térreas, sobrados, edículas, área gourmet, piscina, reformas e ampliações estruturais em Campo Grande - MS.",
+              "serviceType": "Construção Residencial e Edículas",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Obras Comerciais: Lojas e Edifícios",
+              "description": "Construção de lojas, salas, centros comerciais e edifícios de múltiplos pavimentos, com adequação a normas e acessibilidade.",
+              "serviceType": "Obras Comerciais: Lojas e Edifícios",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 5,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Obras Industriais e Galpões",
+              "description": "Galpões, barracões e ampliações industriais em estrutura metálica ou pré-moldados, com pisos de alta resistência e docas.",
+              "serviceType": "Obras Industriais e Galpões",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 6,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Regularização, Habite-se e Crédito FCO",
+              "description": "Regularização e averbação de imóveis, emissão de Habite-se, alvarás de construção e dossiê técnico exigido pelos bancos no financiamento FCO.",
+              "serviceType": "Regularização, Habite-se e Crédito FCO",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#logo",
+      "url": "https://www.mpengenhariaeprojetos.com.br/assets/img/logo-mp-dark.png",
+      "width": 220,
+      "height": 185,
+      "caption": "Logotipo da MP Engenharia e Projetos"
+    },
     {
       "@type": "Person",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#matheus",
       "name": "Matheus Victor Ferreira Barbosa",
-      "jobTitle": "Engenheiro Civil - CREA 67721-MS"
+      "givenName": "Matheus",
+      "familyName": "Ferreira Barbosa",
+      "jobTitle": "Engenheiro Civil",
+      "worksFor": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Registro profissional",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "CREA-MS",
+          "alternateName": "Conselho Regional de Engenharia e Agronomia de Mato Grosso do Sul"
+        },
+        "identifier": "CREA 67721-MS"
+      }
     },
     {
       "@type": "Person",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#pedro",
       "name": "Pedro Augusto Caldeira",
-      "jobTitle": "Engenheiro Civil - CREA 70662-MS"
-    }
-  ],
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Arquitetura e Projetos de Construção"
+      "givenName": "Pedro",
+      "familyName": "Caldeira",
+      "jobTitle": "Engenheiro Civil",
+      "worksFor": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Registro profissional",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "CREA-MS",
+          "alternateName": "Conselho Regional de Engenharia e Agronomia de Mato Grosso do Sul"
+        },
+        "identifier": "CREA 70662-MS"
       }
     },
     {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Projetos Complementares - Estrutural, Elétrico e Hidráulico"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Construção Residencial e Edículas"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Construção Comercial - Lojas e Edifícios"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Obras Industriais"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Regularização, Habite-se e FCO"
-      }
-    }
-  ],
-  "logo": "https://www.mpengenhariaeprojetos.com.br/assets/img/logo-mp-dark.png",
-  "image": [
-    "https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg",
-    "https://www.mpengenhariaeprojetos.com.br/assets/img/projeto-01.jpg",
-    "https://www.mpengenhariaeprojetos.com.br/assets/img/projeto-08.jpg"
-  ]
-}
-</script>
-
-
-<!-- Perguntas frequentes · espelha exatamente o FAQ visível na página -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Quanto custa um projeto? E a obra?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "O orçamento é gratuito. Projetos são cobrados por metro quadrado e a execução, por percentual sobre o valor da obra . O valor final só é fechado depois do projeto executivo, com quantitativo item a item — é isso que impede o orçamento de crescer no meio do caminho."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quanto tempo demora?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Projeto arquitetônico completo: de 30 a 45 dias. Aprovação na prefeitura: de 30 a 60 dias, conforme a fila do órgão. Obra residencial: de 8 a 14 meses, dependendo do porte. Você recebe o cronograma com datas antes de assinar."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Com que frequência o engenheiro vai até a obra?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No mínimo uma visita técnica por semana, e presença diária nas fases de fundação e estrutura. A cada visita você recebe fotos e um relatório de andamento, e tem o WhatsApp direto do engenheiro responsável."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Vocês ajudam a conseguir o financiamento FCO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sim. Projeto aprovado, memorial descritivo, orçamento detalhado e cronograma físico-financeiro saem daqui no formato que o banco exige. A aprovação final é do banco, mas a parte técnica vai pronta — o que evita a causa mais comum de devolução do processo."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Os projetos complementares já estão inclusos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "É possível contratar só o arquitetônico, mas recomendamos o pacote completo com estrutural, elétrico e hidrossanitário compatibilizados. Projeto feito por gente diferente e sem compatibilização é a origem da maior parte dos custos extras que aparecem no canteiro. Na proposta, cada item vem com valor separado."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Posso contratar só o projeto, sem a execução?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Pode. Muitos clientes contratam projeto e aprovação e executam com equipe própria. Nesse caso também oferecemos acompanhamento técnico da obra de terceiros, para garantir que o desenho está sendo executado como foi projetado."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Vocês atendem fora de Campo Grande?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Campo Grande e região metropolitana são nossa base. Para o interior do estado avaliamos caso a caso, considerando o porte da obra e a logística do acompanhamento. Mande a localização que respondemos com a viabilidade."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Minha casa está irregular. Dá para regularizar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Na maioria dos casos, sim. Levantamos o que foi construído, elaboramos o projeto de regularização, emitimos a ART e conduzimos o processo na prefeitura até o Habite-se. Imóvel regularizado é o que permite financiar, vender e averbar em cartório sem trava."
-      }
+      "@type": "FAQPage",
+      "@id": "https://www.mpengenhariaeprojetos.com.br/#faq",
+      "isPartOf": {
+        "@id": "https://www.mpengenhariaeprojetos.com.br/#pagina"
+      },
+      "inLanguage": "pt-BR",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto custa um projeto? E a obra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O orçamento é gratuito. Projetos são cobrados por metro quadrado e a execução, por percentual sobre o valor da obra . O valor final só é fechado depois do projeto executivo, com quantitativo item a item — é isso que impede o orçamento de crescer no meio do caminho."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo demora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Projeto arquitetônico completo: de 30 a 45 dias. Aprovação na prefeitura: de 30 a 60 dias, conforme a fila do órgão. Obra residencial: de 8 a 14 meses, dependendo do porte. Você recebe o cronograma com datas antes de assinar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Com que frequência o engenheiro vai até a obra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No mínimo uma visita técnica por semana, e presença diária nas fases de fundação e estrutura. A cada visita você recebe fotos e um relatório de andamento, e tem o WhatsApp direto do engenheiro responsável."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês ajudam a conseguir o financiamento FCO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Projeto aprovado, memorial descritivo, orçamento detalhado e cronograma físico-financeiro saem daqui no formato que o banco exige. A aprovação final é do banco, mas a parte técnica vai pronta — o que evita a causa mais comum de devolução do processo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os projetos complementares já estão inclusos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não obrigatoriamente. É possível contratar só o arquitetônico, mas recomendamos o pacote completo com estrutural, elétrico e hidrossanitário compatibilizados. Projeto feito por gente diferente e sem compatibilização é a origem da maior parte dos custos extras que aparecem no canteiro. Na proposta, cada item vem com valor separado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso contratar só o projeto, sem a execução?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode. Muitos clientes contratam projeto e aprovação e executam com equipe própria. Nesse caso também oferecemos acompanhamento técnico da obra de terceiros, para garantir que o desenho está sendo executado como foi projetado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é o Habite-se e quando ele é obrigatório?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Habite-se é o documento emitido pela prefeitura que atesta que a obra foi concluída conforme o projeto aprovado e que o imóvel pode ser ocupado. Ele é obrigatório em toda construção nova e em ampliações, e é exigido para financiar, vender ou averbar o imóvel em cartório. Em Campo Grande, o pedido é feito após a vistoria final, com o projeto aprovado e a ART em dia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é o crédito FCO e quem pode usar para construir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O FCO é o Fundo Constitucional de Financiamento do Centro-Oeste, uma linha de crédito com juros abaixo do mercado destinada a empresas e produtores rurais de Mato Grosso do Sul, Mato Grosso, Goiás e Distrito Federal. Ele pode financiar a construção e a ampliação de imóveis usados na atividade — galpões, lojas, unidades industriais e instalações rurais. O banco exige um dossiê técnico com projeto aprovado, memorial descritivo, orçamento detalhado e cronograma físico-financeiro, que é a parte que preparamos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês atendem fora de Campo Grande?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, dentro de Mato Grosso do Sul. Campo Grande e região metropolitana são nossa base. Para o interior do estado avaliamos caso a caso, considerando o porte da obra e a logística do acompanhamento. Mande a localização que respondemos com a viabilidade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Minha casa está irregular. Dá para regularizar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Na maioria dos casos, sim. Levantamos o que foi construído, elaboramos o projeto de regularização, emitimos a ART e conduzimos o processo na prefeitura até o Habite-se. Imóvel regularizado é o que permite financiar, vender e averbar em cartório sem trava."
+          }
+        }
+      ]
     }
   ]
 }
 </script>
+
 </head>
 
 <body>
@@ -417,7 +649,7 @@
   <div class="shell">
     <header class="section-head">
       <p class="eyebrow light"><span class="tick"></span> 02 · Nossos serviços</p>
-      <h2 class="section-title">Tudo o que sua obra precisa, sob a mesma responsabilidade técnica.</h2>
+      <h2 class="section-title">Engenharia e arquitetura em Campo Grande, tudo sob a mesma responsabilidade técnica.</h2>
       <p class="section-lead">
         Você não precisa contratar um escritório para o projeto, outro para os complementares,
         um despachante para a papelada e uma equipe para executar. Aqui, o processo inteiro
@@ -430,7 +662,7 @@
       <article class="svc">
         <span class="svc-num">01</span>
         <svg class="svc-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34h32M8 34V16l12-9 12 9v18M16 34v-9h8v9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Arquitetura e Projetos de Construção</h3>
+        <h3>Projeto Arquitetônico e Aprovação na Prefeitura</h3>
         <p>Um desenho que respeita seu terreno, seu orçamento e o seu jeito de morar — com as plantas legais aprovadas na prefeitura.</p>
         <ul class="svc-list">
           <li>Estudo de viabilidade do terreno</li>
@@ -442,7 +674,7 @@
       <article class="svc">
         <span class="svc-num">02</span>
         <svg class="svc-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 6h28v28H6zM6 15h28M15 15v19M23 6v9M23 24h11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Projetos Complementares</h3>
+        <h3>Projetos Complementares: Estrutural, Elétrico e Hidráulico</h3>
         <p>Compatibilizados entre si, para que nenhuma viga bata em tubulação e nenhum quadro fique no lugar errado.</p>
         <ul class="svc-list">
           <li>Cálculo estrutural dimensionado</li>
@@ -466,7 +698,7 @@
       <article class="svc">
         <span class="svc-num">04</span>
         <svg class="svc-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 35h30M9 35V9h22v26M14 15h4M22 15h4M14 22h4M22 22h4M17 35v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Lojas e Edifícios Comerciais</h3>
+        <h3>Obras Comerciais: Lojas e Edifícios</h3>
         <p>Pensadas para operar: fluxo de clientes, acessibilidade e aprovação no Corpo de Bombeiros sem retrabalho.</p>
         <ul class="svc-list">
           <li>Lojas, salas e centros comerciais</li>
@@ -478,7 +710,7 @@
       <article class="svc">
         <span class="svc-num">05</span>
         <svg class="svc-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 35h32M7 35V20l9-6v6l9-6v21M29 35V12h4v23M12 26h3M21 26h3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Obras Industriais</h3>
+        <h3>Obras Industriais e Galpões</h3>
         <p>Estrutura dimensionada para a carga real de operação, a logística interna e o crescimento futuro da planta.</p>
         <ul class="svc-list">
           <li>Galpões e barracões industriais</li>
@@ -490,7 +722,7 @@
       <article class="svc svc-gold">
         <span class="svc-num">06</span>
         <svg class="svc-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h14l7 7v25H10zM24 4v7h7M15 20h11M15 26h11M15 14h5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Regularização, Habite-se e FCO</h3>
+        <h3>Regularização, Habite-se e Crédito FCO</h3>
         <p>Regularizamos o que está irregular, emitimos o Habite-se e montamos o dossiê técnico exigido pelo banco no crédito FCO.</p>
         <ul class="svc-list">
           <li>Regularização e averbação de imóveis</li>
@@ -1002,7 +1234,7 @@
       <details class="faq-item">
         <summary><span>Os projetos complementares já estão inclusos?</span><i aria-hidden="true"></i></summary>
         <div class="faq-body">
-          <p>É possível contratar só o arquitetônico, mas recomendamos o pacote completo
+          <p>Não obrigatoriamente. É possível contratar só o arquitetônico, mas recomendamos o pacote completo
              com estrutural, elétrico e hidrossanitário compatibilizados. Projeto feito por
              gente diferente e sem compatibilização é a origem da maior parte dos custos
              extras que aparecem no canteiro. Na proposta, cada item vem com valor separado.</p>
@@ -1018,10 +1250,41 @@
         </div>
       </details>
 
+      <!-- ------------------------------------------------------------------
+           As duas perguntas abaixo são de definição. Elas existem porque
+           "o que é Habite-se" e "o que é FCO" estão entre as buscas mais
+           feitas por quem vai construir — e porque respostas curtas e diretas
+           são o que o Google usa em caixa de resposta e o que os assistentes
+           de IA citam. A resposta começa pela definição, não por rodeio.
+           ------------------------------------------------------------------ -->
+      <details class="faq-item">
+        <summary><span>O que é o Habite-se e quando ele é obrigatório?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-body">
+          <p>O Habite-se é o documento emitido pela prefeitura que atesta que a obra foi
+             concluída conforme o projeto aprovado e que o imóvel pode ser ocupado.
+             Ele é obrigatório em toda construção nova e em ampliações, e é exigido para
+             financiar, vender ou averbar o imóvel em cartório. Em Campo Grande, o pedido
+             é feito após a vistoria final, com o projeto aprovado e a ART em dia.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>O que é o crédito FCO e quem pode usar para construir?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-body">
+          <p>O FCO é o Fundo Constitucional de Financiamento do Centro-Oeste, uma linha de
+             crédito com juros abaixo do mercado destinada a empresas e produtores rurais
+             de Mato Grosso do Sul, Mato Grosso, Goiás e Distrito Federal. Ele pode
+             financiar a construção e a ampliação de imóveis usados na atividade —
+             galpões, lojas, unidades industriais e instalações rurais. O banco exige um
+             dossiê técnico com projeto aprovado, memorial descritivo, orçamento detalhado
+             e cronograma físico-financeiro, que é a parte que preparamos.</p>
+        </div>
+      </details>
+
       <details class="faq-item">
         <summary><span>Vocês atendem fora de Campo Grande?</span><i aria-hidden="true"></i></summary>
         <div class="faq-body">
-          <p>Campo Grande e região metropolitana são nossa base. Para o interior do estado
+          <p>Sim, dentro de Mato Grosso do Sul. Campo Grande e região metropolitana são nossa base. Para o interior do estado
              avaliamos caso a caso, considerando o porte da obra e a logística do
              acompanhamento. Mande a localização que respondemos com a viabilidade.</p>
         </div>

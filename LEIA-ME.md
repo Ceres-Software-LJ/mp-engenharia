@@ -285,3 +285,54 @@ folgado — vale medir com dados reais no Search Console antes de decidir.
   O verde oficial do WhatsApp (`#25D366`) tem contraste 1,9:1 e seria ilegível —
   por isso ele aparece só no pulso do botão flutuante.
 - Respeita `prefers-reduced-motion`
+
+---
+
+## SEO e buscadores com IA
+
+### Arquivos na raiz
+
+| Arquivo | Para que serve |
+|---|---|
+| `robots.txt` | Libera os buscadores tradicionais **e os robôs de IA** (ChatGPT, Gemini, Claude, Perplexity, Copilot). Bloquear esses agentes tiraria a MP das respostas geradas por IA — que é onde muita gente hoje pergunta "qual engenheiro contratar em Campo Grande?" |
+| `sitemap.xml` | Uma URL (o site é de página única) e as 9 fotos de projeto declaradas, para aparecerem na busca por imagens |
+| `llms.txt` | Resumo em texto simples para assistentes de IA: serviços, os dois CREA, área de atendimento e contato. Traz também uma lista do que **não** deve ser afirmado sobre a empresa, para evitar que a IA invente preço, prazo ou tempo de mercado |
+
+### Dados estruturados
+
+O `index.html` tem **um único bloco JSON-LD** com um grafo de 8 entidades
+ligadas entre si por `@id`: empresa, site, página, imagem, logotipo, os dois
+engenheiros (cada um com seu CREA registrado como credencial) e o FAQ com as
+10 perguntas. É esse formato que o Google e os buscadores com IA leem melhor.
+
+**O FAQ do schema é gerado a partir do FAQ visível na página.** Se você editar
+uma pergunta no HTML, edite também no bloco JSON-LD — os dois precisam bater,
+senão o Google desqualifica a marcação.
+
+Para conferir depois de publicar:
+[Teste de Resultados Ricos do Google](https://search.google.com/test/rich-results).
+
+### O que ainda falta para o SEO local
+
+1. **Google Meu Negócio** é o fator número um para busca local — mais do que
+   qualquer coisa no site. Perfil completo, com fotos, horário e categoria
+   "Engenheiro civil" ou "Empreiteiro".
+2. **Endereço com rua e número.** O schema hoje declara só cidade e estado.
+   Com o endereço completo, a marcação fica elegível a mais recursos de busca
+   local. Se a empresa não atende no local, é possível usar "área de
+   atendimento" no Google Meu Negócio sem expor o endereço.
+3. **Trocar o domínio** em `index.html` (canonical, og:url e todo o JSON-LD),
+   `robots.txt`, `sitemap.xml` e `llms.txt`.
+4. **Nota média das avaliações** no schema. Só depois de confirmar o número
+   real no perfil do Google — marcação de avaliação sem lastro é penalizada.
+
+### Sobre as palavras-chave
+
+Os termos usados no título, na descrição e nos subtítulos foram derivados dos
+serviços reais e da forma como se busca por eles em português
+("engenheiro civil Campo Grande", "Habite-se Campo Grande",
+"regularização de imóvel Campo Grande", "financiamento FCO Mato Grosso do Sul").
+**Não são validados por volume de busca** — para isso é preciso o Planejador de
+Palavras-chave do Google ou ferramenta equivalente. Depois de uns dois meses no
+ar, o Search Console mostra os termos reais pelos quais o site aparece, e vale
+ajustar os textos com base neles.

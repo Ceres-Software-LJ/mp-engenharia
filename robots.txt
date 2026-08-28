@@ -1,4 +1,73 @@
+# MP Engenharia e Projetos — Campo Grande, MS
+# ============================================================
+# Buscadores tradicionais: acesso liberado
+# ============================================================
 User-agent: *
 Allow: /
 
+# ============================================================
+# Buscadores com IA generativa
+# ------------------------------------------------------------
+# Liberados de propósito. Quando alguém pergunta a um assistente
+# "qual empresa de engenharia contratar em Campo Grande?", só pode
+# ser citado quem deixou o robô ler o site. Bloquear estes agentes
+# tira a MP das respostas geradas por IA.
+# Se um dia a empresa quiser sair desses índices, troque
+# "Allow: /" por "Disallow: /" no bloco correspondente.
+# ============================================================
+
+# OpenAI — ChatGPT e ChatGPT Search
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Google — Gemini e AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft — Copilot e Bing
+User-agent: bingbot
+Allow: /
+
+# Apple — Siri e Spotlight
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta — assistente do WhatsApp e Instagram
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl — base pública usada por vários modelos
+User-agent: CCBot
+Allow: /
+
+# ============================================================
+# Arquivos de apoio
+# ============================================================
+# Resumo legível por IA: /llms.txt
 Sitemap: https://www.mpengenhariaeprojetos.com.br/sitemap.xml
