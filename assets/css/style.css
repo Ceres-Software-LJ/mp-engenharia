@@ -377,6 +377,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .site-header.is-stuck .brand-mark { height: 34px; }
 
+/* A marca leva de volta ao topo · leve resposta ao passar o mouse */
+.brand { cursor: pointer; transition: opacity .25s var(--ease); }
+.brand:hover { opacity: .78; }
+
 .brand-text {
   display: flex;
   align-items: center;

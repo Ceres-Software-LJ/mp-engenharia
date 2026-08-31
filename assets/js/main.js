@@ -95,6 +95,18 @@
     });
   }
 
+  // Logo (header e rodapé) volta ao topo da página.
+  // Sem script o link #topo já funciona; aqui só damos a rolagem suave
+  // e fechamos o menu mobile, se estiver aberto.
+  each($$('a.brand[href="#topo"]'), function (brand) {
+    brand.addEventListener('click', function (event) {
+      if (typeof window.scrollTo !== 'function') return;
+      event.preventDefault();
+      setMenu(false);
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
   // Link ativo conforme a seção visível
   var navLinks = nav ? Array.prototype.slice.call($$('a[href^="#"]', nav)) : [];
   var sections = navLinks
