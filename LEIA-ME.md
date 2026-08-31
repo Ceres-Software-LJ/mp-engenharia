@@ -150,7 +150,7 @@ grep -n "CONFIRMAR" index.html
 
 | Onde | O que confirmar |
 |------|-----------------|
-| Credenciais do topo | O número **43 avaliações** — confira o total real no perfil do Google Meu Negócio |
+| Credenciais do topo | O número **74 avaliações** — confira o total real no perfil do Google Meu Negócio |
 | Nota abaixo do botão | **"Respondemos em até 2 horas úteis"** — só mantenha se a MP cumprir todo dia útil. Promessa de prazo que falha destrói mais confiança do que a ausência dela |
 | FAQ · preço | O **modelo de cobrança** de projeto (por m²?) e de obra (percentual?) |
 | FAQ · prazo | As três **faixas de prazo**: projeto, aprovação e obra |

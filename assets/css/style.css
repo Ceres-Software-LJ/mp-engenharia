@@ -891,18 +891,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--gold);
 }
 
-/* Card em destaque (FCO / Habite-se) */
-.svc-gold { background: #161616; }
-.svc-gold::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gold);
-}
-
 .svc-cta {
   display: flex;
   flex-wrap: wrap;
