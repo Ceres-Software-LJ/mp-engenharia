@@ -114,6 +114,26 @@ Não há limite de fotos. Para preparar uma imagem no formato certo (4:3):
 ffmpeg -i original.jpg -vf "scale=1200:900:force_original_aspect_ratio=increase,crop=1200:900" -q:v 4 assets/img/projeto-10.jpg
 ```
 
+### Imagens da seção "Anatomia do projeto"
+Cada uma das 7 peças tem um espaço de imagem já reservado. Enquanto não
+houver foto, aparece uma malha técnica com o ícone da peça.
+
+Para colocar a imagem, encontre o `<div class="anat-media">` da peça e cole
+um `<img>` dentro dele, logo abaixo do comentário `IMAGEM ·`:
+
+```html
+<div class="anat-media">
+  <!-- IMAGEM · cole um <img> aqui... -->
+  <img src="assets/img/anat-planta-baixa.jpg" alt="Planta baixa do projeto"
+       loading="lazy" width="1200" height="900">
+  <svg class="anat-ico" ...>...</svg>
+</div>
+```
+
+Não precisa apagar o ícone nem a malha: a imagem cobre os dois sozinha.
+O formato é o mesmo da galeria, 4:3 (1200x900), e dá para preparar com o
+mesmo comando do ffmpeg da seção anterior.
+
 ### Adicionar uma avaliação
 Copie um bloco `<figure class="quote">` inteiro para dentro de uma das
 `<div class="marquee-track">` e troque o texto, o nome e a legenda.

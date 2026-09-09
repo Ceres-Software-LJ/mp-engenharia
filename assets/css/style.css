@@ -152,6 +152,7 @@
   --wa:         #0C7A3B;   /* Verde WhatsApp com alto contraste */
   --wa-hover:   #0A6832;
   --wa-glow:    #25D366;   /* Brilho / pulso do botão flutuante */
+  --blueprint:  #3F6B87;   /* Azul técnico · acento da Anatomia do projeto */
 
   /* Tipografia */
   --font-title: "Outfit", "Outfit Fallback", system-ui, sans-serif;
@@ -1102,6 +1103,141 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ==========================================================================
+   12c. ANATOMIA DO PROJETO
+   Cards com espaço de imagem reservado. Enquanto não houver foto, o
+   .anat-media mostra uma malha técnica com o ícone da peça; basta
+   colar um <img> dentro que ele cobre o marcador (object-fit: cover).
+   Acento azul técnico para não se confundir com o stepper de #etapas.
+   ========================================================================== */
+
+/* Espaço de imagem · comum ao destaque e aos cards */
+.anat-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #EDF1F4;
+  background-image:
+    linear-gradient(to right, rgba(63, 107, 135, .11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(63, 107, 135, .11) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+/* A imagem real cobre a malha e o ícone, sem precisar apagá-los */
+.anat-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.anat-media .anat-ico {
+  width: 34px;
+  height: 34px;
+  color: var(--blueprint);
+  opacity: .55;
+}
+
+/* Destaque: imagem à esquerda, texto à direita */
+.anat-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: center;
+  padding: clamp(18px, 2.2vw, 26px);
+  background: var(--paper-pure);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--blueprint);
+}
+.anat-lead-body { max-width: 60ch; }
+.anat-lead-body h3 {
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  font-weight: 600;
+  margin: 0 0 .5em;
+}
+.anat-lead-body p { margin: 0; font-size: .98rem; color: var(--gray); }
+
+.anat-group { margin-top: clamp(30px, 4vw, 46px); }
+.anat-group-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 clamp(20px, 2.6vw, 30px);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blueprint);
+}
+.anat-group-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line-soft);
+}
+
+/* Grade de cards: 3 x 2 no desktop, sem célula órfã */
+.anat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.anat-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-pure);
+  border: 1px solid var(--line-soft);
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.anat-card:hover {
+  border-color: var(--blueprint);
+  box-shadow: 0 6px 22px rgba(17, 17, 17, .07);
+}
+.anat-card .anat-media { border-bottom: 1px solid var(--line-soft); }
+.anat-card-body { padding: clamp(16px, 1.8vw, 22px); }
+
+.anat-num {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  color: var(--blueprint);
+}
+.anat-card h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 .45em;
+}
+.anat-card p {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--gray);
+}
+
+.anat-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: clamp(34px, 4vw, 50px);
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line-soft);
+}
+.anat-cta p {
+  max-width: 54ch;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+/* ==========================================================================
    12b. FAIXA DE VÍDEO · A ENTREGA
    ========================================================================== */
 .video-band {
@@ -1676,11 +1812,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ========================================================================== */
 @media (max-width: 1080px) {
   .diff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .anat-lead { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); }
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .foot-brand { grid-column: 1 / -1; }
 }
 
 @media (max-width: 900px) {
+  .anat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .about-grid { grid-template-columns: minmax(0, 1fr); }
   .proof-inner { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .proof-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1760,6 +1900,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 760px) {
+  .anat-lead { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 56px); }
   .hero-title { max-width: 100%; }
   .hero-stats { grid-template-columns: minmax(0, 1fr); max-width: 100%; }
@@ -1808,6 +1950,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 620px) {
+  .anat-grid { grid-template-columns: minmax(0, 1fr); }
+
   .foot-grid { grid-template-columns: minmax(0, 1fr); }
   .foot-bottom { flex-direction: column; align-items: flex-start; }
 
