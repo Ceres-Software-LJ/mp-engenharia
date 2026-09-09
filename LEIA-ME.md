@@ -68,14 +68,14 @@ seção (`A. HEADER`, `B. HERO`, `C. DORES`...). Procure o trecho e troque.
 Todos os botões seguem o formato:
 
 ```
-https://wa.me/5567992142661?text=MENSAGEM
+https://wa.me/5567984180026?text=MENSAGEM
 ```
 
-- `5567992142661` = 55 (Brasil) + 67 (DDD) + número, **sem espaços ou traços**
+- `5567984180026` = 55 (Brasil) + 67 (DDD) + número, **sem espaços ou traços**
 - `MENSAGEM` = texto já digitado para o cliente (`%20` = espaço, `%C3%A1` = á)
 
 Para trocar o número no site inteiro, use **Localizar e substituir**:
-procure `5567992142661`. O segundo número, `5567981270814`, aparece na seção
+procure `5567984180026`. O segundo número, `5567984180024`, aparece na seção
 "Sobre" e no rodapé.
 
 ### Cores e fontes
@@ -213,7 +213,7 @@ Para usar domínio próprio: **Settings → Domains** no painel do Vercel.
 
 1. Cadastre o site no [Google Search Console](https://search.google.com/search-console)
 2. Vincule o perfil do **Google Meu Negócio** (é de lá que vêm as avaliações)
-3. Coloque o link na bio do Instagram [@mp_engenharia](https://www.instagram.com/mp_engenharia)
+3. Coloque o link na bio do Instagram [@mp__engenharia](https://www.instagram.com/mp__engenharia)
 
 ---
 
