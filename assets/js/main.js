@@ -95,38 +95,167 @@
     });
   }
 
-  // Logo (header e rodapé) volta ao topo da página.
-  // Sem script o link #topo já funciona; aqui só damos a rolagem suave
-  // e fechamos o menu mobile, se estiver aberto.
-  each($$('a.brand[href="#topo"]'), function (brand) {
-    brand.addEventListener('click', function (event) {
-      if (typeof window.scrollTo !== 'function') return;
-      event.preventDefault();
-      setMenu(false);
-      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  /* ========================================================================
+     02b. ROLAGEM DOS LINKS INTERNOS
+     ------------------------------------------------------------------------
+     Antes isso era feito por 'scroll-behavior: smooth' no CSS. Só que o
+     ScrollTrigger fixa o hero (pin) e mexe na posição de rolagem por conta
+     própria: com a rolagem suave do navegador ligada as duas coisas brigavam
+     e o link do menu ia parar na seção errada — ou simplesmente não saía do
+     lugar. Aqui a posição é calculada na hora do clique, já descontando a
+     altura real do header fixo.
+     ======================================================================== */
+
+  // O header encolhe ao sair do topo. Como todo destino fica abaixo do topo,
+  // o alvo é sempre a altura "encolhida", lida da variável do CSS.
+  function alturaDoHeader() {
+    var raiz = getComputedStyle(document.documentElement);
+    var valor = parseFloat(raiz.getPropertyValue('--header-h-stuck'));
+    if (valor) return valor;
+    return header ? header.getBoundingClientRect().height : 0;
+  }
+
+  var FOLGA_TOPO = 16; // respiro entre o header e o título da seção
+
+  function posicaoDe(alvo) {
+    var topo = alvo.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+    return Math.max(0, Math.round(topo - alturaDoHeader() - FOLGA_TOPO));
+  }
+
+  // A rolagem suave NATIVA (scrollTo com behavior:'smooth') não funciona nesta
+  // página: o ScrollTrigger escreve a posição de rolagem a cada evento por
+  // causa do pin do hero, e isso cancela a animação do navegador na hora —
+  // o clique simplesmente não saía do lugar. Por isso animamos com o próprio
+  // GSAP, escrevendo a posição quadro a quadro.
+  var tweenDeRolagem = null;
+
+  function rolarPara(destino) {
+    if (tweenDeRolagem) { tweenDeRolagem.kill(); tweenDeRolagem = null; }
+
+    if (reduceMotion || !hasGsap) {
+      window.scrollTo(0, destino);
+      return;
+    }
+
+    var posicao = { y: window.pageYOffset || document.documentElement.scrollTop };
+    var distancia = Math.abs(destino - posicao.y);
+
+    tweenDeRolagem = gsap.to(posicao, {
+      y: destino,
+      // Perto: rápido. Longe: não passa de ~1,1s para não cansar.
+      duration: Math.min(1.1, Math.max(0.45, distancia / 4200)),
+      ease: 'power2.inOut',
+      overwrite: true,
+      onUpdate: function () { window.scrollTo(0, posicao.y); },
+      onComplete: function () { tweenDeRolagem = null; }
     });
+  }
+
+  function rolarAte(alvo) {
+    // Com o hero fixado, as posições mudam conforme o ScrollTrigger monta os
+    // espaçadores. Um refresh antes do cálculo garante medida atualizada.
+    if (hasScrollTrigger) ScrollTrigger.refresh();
+    rolarPara(posicaoDe(alvo));
+  }
+
+  // Se a pessoa rolar no meio da animação, ela manda: cancelamos a nossa.
+  each(['wheel', 'touchstart', 'keydown'], function (evento) {
+    window.addEventListener(evento, function () {
+      if (tweenDeRolagem) { tweenDeRolagem.kill(); tweenDeRolagem = null; }
+    }, { passive: true });
   });
 
-  // Link ativo conforme a seção visível
+  // Vale para qualquer link interno da página: menu, rodapé, CTAs e a seta
+  // do hero. O href continua no HTML, então sem JS o salto simples funciona.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest ? event.target.closest('a[href^="#"]') : null;
+    if (!link || link.hasAttribute('download') || link.target === '_blank') return;
+
+    var href = link.getAttribute('href');
+    if (!href || href === '#') return;
+
+    var alvo = href === '#topo' ? null : $(href);
+    if (href !== '#topo' && !alvo) return; // âncora inexistente: deixa o navegador decidir
+
+    event.preventDefault();
+    setMenu(false);
+
+    if (href === '#topo') {
+      rolarPara(0);
+      if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+      return;
+    }
+
+    rolarAte(alvo);
+    // Atualiza a URL sem provocar o salto nativo do navegador.
+    if (history.pushState) history.pushState(null, '', href);
+  });
+
+  // Chegada direta pela URL (ex.: /#interiores): o salto nativo acontece antes
+  // do ScrollTrigger montar o pin, então reposiciona depois que tudo assentou.
+  window.addEventListener('load', function () {
+    if (!location.hash || location.hash === '#topo') return;
+    var alvo = $(location.hash);
+    if (!alvo) return;
+    setTimeout(function () {
+      if (hasScrollTrigger) ScrollTrigger.refresh();
+      window.scrollTo(0, posicaoDe(alvo));
+    }, 300);
+  });
+
+  /* ========================================================================
+     02c. LINK ATIVO CONFORME A SEÇÃO VISÍVEL
+     ------------------------------------------------------------------------
+     A versão anterior criava um ScrollTrigger por seção e só ligava o link
+     ao entrar nela. Como várias seções da página não estão no menu
+     (#dores, #projeto, #projetos, #faq...), ao passar por elas o último link
+     continuava aceso — e com o pin do hero as medidas ainda saíam trocadas.
+     Agora a seção ativa é decidida a cada rolagem, comparando a posição real
+     de cada alvo com a linha de leitura logo abaixo do header.
+     ======================================================================== */
   var navLinks = nav ? Array.prototype.slice.call($$('a[href^="#"]', nav)) : [];
-  var sections = navLinks
-    .map(function (link) { return $(link.getAttribute('href')); })
+  var alvosDoMenu = navLinks
+    .map(function (link) {
+      var el = $(link.getAttribute('href'));
+      return el ? { link: link, el: el } : null;
+    })
     .filter(Boolean);
 
-  if (hasScrollTrigger && sections.length) {
-    sections.forEach(function (section) {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 45%',
-        end: 'bottom 45%',
-        onToggle: function (self) {
-          if (!self.isActive) return;
-          navLinks.forEach(function (link) {
-            link.classList.toggle('is-active', link.getAttribute('href') === '#' + section.id);
-          });
-        }
-      });
+  function marcarSecaoAtiva() {
+    if (!alvosDoMenu.length) return;
+
+    var linha = alturaDoHeader() + 24; // logo abaixo do header fixo
+    var ativo = null;
+
+    alvosDoMenu.forEach(function (item) {
+      var r = item.el.getBoundingClientRect();
+      // A seção vale como ativa enquanto cruza a linha de leitura.
+      if (r.top <= linha && r.bottom > linha) ativo = item.link;
     });
+
+    // Fim da página: a última entrada do menu fica acesa.
+    if (!ativo && (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 2) {
+      ativo = alvosDoMenu[alvosDoMenu.length - 1].link;
+    }
+
+    navLinks.forEach(function (link) {
+      link.classList.toggle('is-active', link === ativo);
+    });
+  }
+
+  if (alvosDoMenu.length) {
+    var aguardando = false;
+    var aoRolar = function () {
+      if (aguardando) return;
+      aguardando = true;
+      window.requestAnimationFrame(function () {
+        aguardando = false;
+        marcarSecaoAtiva();
+      });
+    };
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    window.addEventListener('resize', aoRolar);
+    marcarSecaoAtiva();
   }
 
   /* ========================================================================
@@ -203,7 +332,7 @@
     { sel: '.svc', y: 34, stagger: 0.08 },
     { sel: '.svc-cta', y: 22, stagger: 0 },
     { sel: '.about-copy > *', y: 22, stagger: 0.07 },
-    { sel: '.member, .team-note', y: 26, stagger: 0.1 },
+    { sel: '.team-group-label, .member, .team-note', y: 26, stagger: 0.1 },
     { sel: '.diff', y: 30, stagger: 0.08 },
     { sel: '.faq-item', y: 18, stagger: 0.05 },
     { sel: '.faq-cta', y: 20, stagger: 0 },

@@ -75,8 +75,9 @@ https://wa.me/5567984180026?text=MENSAGEM
 - `MENSAGEM` = texto já digitado para o cliente (`%20` = espaço, `%C3%A1` = á)
 
 Para trocar o número no site inteiro, use **Localizar e substituir**:
-procure `5567984180026`. O segundo número, `5567984180024`, aparece na seção
-"Sobre" e no rodapé.
+procure `5567984180026`. O segundo número, `5567984180024`, é o da arquiteta
+e aparece na seção "Sobre", na seção "Design de interiores", no CTA do
+projeto arquitetônico e no rodapé.
 
 ### Cores e fontes
 Concentradas no topo do `assets/css/style.css`, no bloco `:root`:
@@ -133,6 +134,40 @@ um `<img>` dentro dele, logo abaixo do comentário `IMAGEM ·`:
 Não precisa apagar o ícone nem a malha: a imagem cobre os dois sozinha.
 O formato é o mesmo da galeria, 4:3 (1200x900), e dá para preparar com o
 mesmo comando do ffmpeg da seção anterior.
+
+### Imagens da seção "Design de interiores"
+Funciona igual à "Anatomia do projeto": cada um dos 6 cards já tem um espaço
+de imagem reservado, que mostra uma malha dourada com o ícone enquanto não
+houver foto. Encontre o `<div class="int-media">` do card e cole um `<img>`
+dentro dele, logo abaixo do comentário `IMAGEM ·`:
+
+```html
+<div class="int-media">
+  <!-- IMAGEM · cole um <img> aqui... -->
+  <img src="assets/img/int-iluminacao.jpg" alt="Projeto de iluminação da sala"
+       loading="lazy" width="1200" height="900">
+  <svg class="int-ico" ...>...</svg>
+</div>
+```
+
+Mesmo formato das outras: 4:3 (1200x900).
+
+### Formações da equipe (pós-graduações)
+Na seção "Sobre", cada pessoa tem uma lista `<ul class="member-edu">` com as
+formações complementares. Para acrescentar uma, basta somar um item:
+
+```html
+<ul class="member-edu">
+  <li>Pós-graduação em Gestão de Projetos e Análise de Obras em BIM</li>
+</ul>
+```
+
+O card do **Pedro** já tem essa lista pronta, comentada, esperando o dado —
+é só apagar o `<!--` e o `-->` em volta e escrever a formação.
+
+Quem tiver uma pós-graduação nova também deve ganhar a entrada correspondente
+no bloco `application/ld+json` do topo do `index.html` (campo `hasCredential`),
+que é o que os buscadores leem.
 
 ### Adicionar uma avaliação
 Copie um bloco `<figure class="quote">` inteiro para dentro de uma das

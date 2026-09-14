@@ -165,6 +165,7 @@
   --gutter:     clamp(20px, 5vw, 48px);
   --section-y:  clamp(60px, 7vw, 96px);
   --header-h:   76px;
+  --header-h-stuck: 66px;  /* altura do header apos sair do topo (lida tambem pelo main.js) */
   --radius:     2px;
 
   /* Transições */
@@ -177,7 +178,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
+  /* NÃO reativar 'scroll-behavior: smooth' aqui.
+     O ScrollTrigger fixa o hero (pin) e reposiciona a rolagem por conta
+     própria; com a rolagem suave do CSS ligada as duas coisas brigam e os
+     links do menu passam a cair na seção errada — ou a não sair do lugar.
+     A rolagem suave dos links internos é feita no main.js (rolagemSuave),
+     que respeita prefers-reduced-motion. */
   scroll-padding-top: calc(var(--header-h) + 16px);
   -webkit-text-size-adjust: 100%;
 }
@@ -346,7 +352,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
               height .35s var(--ease), backdrop-filter .35s var(--ease);
 }
 .site-header.is-stuck {
-  height: 66px;
+  height: var(--header-h-stuck);
   background: rgba(17,17,17,.94);
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
@@ -972,6 +978,67 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--ink);
 }
 
+/* Formações complementares (pós-graduações, especializações).
+   Para adicionar uma, basta incluir um <li> na lista do card. */
+.member-edu {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+.member-edu li {
+  position: relative;
+  padding-left: 16px;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--gray);
+}
+.member-edu li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 7px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Cabeçalho de cada bloco da equipe: engenharia primeiro, depois
+   arquitetura e interiores. Precisa de fundo próprio porque .team
+   usa gap de 1px sobre um fundo de linha. */
+.team-group-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 16px clamp(20px, 2.4vw, 30px);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.team-group-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+/* Link dentro de parágrafo corrido */
+.inline-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color .25s var(--ease);
+}
+.inline-link:hover { color: var(--gold); }
+
 .team-note {
   background: var(--ink);
   color: var(--gray-light);
@@ -979,6 +1046,101 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .team-note p { margin: 0; font-size: .9rem; line-height: 1.65; }
 .team-note strong { color: var(--gold); font-weight: 600; }
+
+
+/* ==========================================================================
+   10b. DESIGN DE INTERIORES
+   --------------------------------------------------------------------------
+   Seção em fundo escuro (.section-ink). O acento é o dourado, para
+   distinguir de "Anatomia do projeto", que usa o azul técnico.
+   .int-media é o espaço de imagem: cole um <img> dentro que ele cobre
+   o marcador sozinho (object-fit: cover).
+   ========================================================================== */
+.int-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  margin-top: clamp(30px, 4vw, 46px);
+}
+.int-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  transition: border-color .3s var(--ease), transform .3s var(--ease);
+}
+.int-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+/* Espaço de imagem · malha técnica discreta enquanto não há foto */
+.int-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink-line);
+  background-color: #191919;
+  background-image:
+    linear-gradient(to right, rgba(198, 166, 98, .10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(198, 166, 98, .10) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+/* A imagem real cobre a malha e o ícone, sem precisar apagá-los */
+.int-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.int-media .int-ico {
+  width: 34px;
+  height: 34px;
+  color: var(--gold);
+  opacity: .6;
+}
+
+.int-card-body { padding: clamp(16px, 1.8vw, 22px); }
+.int-num {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  color: var(--gold);
+}
+.int-card h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 .45em;
+}
+.int-card p {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--gray-light);
+}
+
+.int-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: clamp(34px, 4vw, 50px);
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--ink-line);
+}
+.int-cta p {
+  max-width: 54ch;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--gray-light);
+}
 
 /* ==========================================================================
    11. DIFERENCIAIS
@@ -1820,6 +1982,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 @media (max-width: 900px) {
   .anat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .int-grid  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .about-grid { grid-template-columns: minmax(0, 1fr); }
   .proof-inner { grid-template-columns: minmax(0, 1fr); gap: 26px; }
@@ -1953,6 +2116,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 @media (max-width: 620px) {
   .anat-grid { grid-template-columns: minmax(0, 1fr); }
+  .int-grid  { grid-template-columns: minmax(0, 1fr); }
 
   .foot-grid { grid-template-columns: minmax(0, 1fr); }
   .foot-bottom { flex-direction: column; align-items: flex-start; }

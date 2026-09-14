@@ -249,6 +249,23 @@
             "position": 3,
             "itemOffered": {
               "@type": "Service",
+              "name": "Design de Interiores",
+              "description": "Projeto de design de interiores assinado por arquiteta registrada no CAU-MS com pós-graduação em Neuroarquitetura: layout e ergonomia dos ambientes, marcenaria sob medida, projeto de iluminação, especificação de materiais e revestimentos, compatibilizado com os projetos elétrico, hidráulico e estrutural.",
+              "serviceType": "Design de Interiores",
+              "provider": {
+                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Campo Grande"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
               "name": "Construção Residencial e Edículas",
               "description": "Execução de casas térreas, sobrados, edículas, área gourmet, piscina, reformas e ampliações estruturais em Campo Grande - MS.",
               "serviceType": "Construção Residencial e Edículas",
@@ -263,7 +280,7 @@
           },
           {
             "@type": "Offer",
-            "position": 4,
+            "position": 5,
             "itemOffered": {
               "@type": "Service",
               "name": "Obras Comerciais: Lojas e Edifícios",
@@ -280,7 +297,7 @@
           },
           {
             "@type": "Offer",
-            "position": 5,
+            "position": 6,
             "itemOffered": {
               "@type": "Service",
               "name": "Obras Industriais e Galpões",
@@ -297,7 +314,7 @@
           },
           {
             "@type": "Offer",
-            "position": 6,
+            "position": 7,
             "itemOffered": {
               "@type": "Service",
               "name": "Regularização, Habite-se e Crédito FCO",
@@ -333,16 +350,28 @@
       "worksFor": {
         "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
       },
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Registro profissional",
-        "recognizedBy": {
-          "@type": "Organization",
-          "name": "CREA-MS",
-          "alternateName": "Conselho Regional de Engenharia e Agronomia de Mato Grosso do Sul"
+      "knowsAbout": [
+        "Gestão de projetos",
+        "Análise de obras em BIM",
+        "Building Information Modeling"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Registro profissional",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "CREA-MS",
+            "alternateName": "Conselho Regional de Engenharia e Agronomia de Mato Grosso do Sul"
+          },
+          "identifier": "CREA 67721-MS"
         },
-        "identifier": "CREA 67721-MS"
-      }
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Pós-graduação",
+          "name": "Pós-graduação em Gestão de Projetos e Análise de Obras em BIM"
+        }
+      ]
     },
     {
       "@type": "Person",
@@ -376,16 +405,33 @@
       "worksFor": {
         "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
       },
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Registro profissional",
-        "recognizedBy": {
-          "@type": "Organization",
-          "name": "CAU-MS",
-          "alternateName": "Conselho de Arquitetura e Urbanismo de Mato Grosso do Sul"
+      "knowsAbout": [
+        "Arquitetura e urbanismo",
+        "Design de interiores",
+        "Neuroarquitetura"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Registro profissional",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "CAU-MS",
+            "alternateName": "Conselho de Arquitetura e Urbanismo de Mato Grosso do Sul"
+          },
+          "identifier": "CAU A326089-5"
         },
-        "identifier": "CAU A326089-5"
-      }
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Formação complementar",
+          "name": "Design de Interiores"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Pós-graduação",
+          "name": "Pós-graduação em Neuroarquitetura"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -520,6 +566,7 @@
     <nav class="nav" id="nav-principal" aria-label="Navegação principal">
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
+      <a href="#interiores">Interiores</a>
       <a href="#diferenciais">Diferenciais</a>
       <a href="#etapas">Etapas</a>
       <a href="#contato">Contato</a>
@@ -802,6 +849,252 @@
 </section>
 
 <!-- ============================================================
+     E. SOBRE NÓS E AUTORIDADE TÉCNICA
+     ------------------------------------------------------------
+     A equipe é apresentada em DOIS blocos separados: primeiro a
+     engenharia (CREA), depois a arquitetura e o design de
+     interiores (CAU). Para adicionar uma formação a alguém, basta
+     acrescentar mais um item na lista .member-edu do respectivo card.
+     ============================================================ -->
+<section class="section section-paper" id="sobre">
+  <div class="shell">
+    <div class="about-grid">
+
+      <div class="about-copy">
+        <p class="eyebrow"><span class="tick"></span> 03 · Quem assina a sua obra</p>
+        <h2 class="section-title">
+          Dois engenheiros e uma arquiteta, uma mesma exigência:<br>
+          <span class="muted-title">obra bem feita se acompanha de perto.</span>
+        </h2>
+        <p>
+          A MP Engenharia e Projetos nasceu em Campo Grande, em 2021, da inconformidade de dois
+          engenheiros civis com o padrão que viam no mercado: projetos entregues por e-mail
+          e nunca mais revisitados, obras tocadas sem responsável técnico presente e clientes
+          descobrindo problemas tarde demais.
+        </p>
+        <p>
+          Decidimos construir o oposto disso. Um escritório que desenha, aprova, orça, executa
+          e entrega — assinando cada etapa com CREA e CAU e estando fisicamente no canteiro
+          para responder por cada decisão tomada.
+        </p>
+        <p>
+          De lá para cá foram mais de 100 projetos e mais de 90 clientes atendidos —
+          famílias que constroem a primeira casa, empresários que abrem lojas e indústrias
+          que ampliam sua planta. A base é Campo Grande e o interior de Mato Grosso do Sul,
+          mas já projetamos para Minas Gerais, Rio de Janeiro, São Paulo e Bahia.
+          Muda a escala e muda o endereço, não muda o cuidado.
+        </p>
+        <p>
+          A formação da equipe não parou na graduação: gestão de obras em BIM do lado da
+          engenharia, neuroarquitetura e design de interiores do lado da arquitetura.
+          É isso que permite entregar a casa inteira — da fundação ao último detalhe de
+          marcenaria — <a class="inline-link" href="#interiores">inclusive o projeto de interiores</a>.
+        </p>
+
+        <a class="btn btn-dark"
+           href="https://wa.me/5567984180024?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Gostaria%20de%20conversar%20com%20os%20respons%C3%A1veis%20t%C3%A9cnicos%20(engenheiros%20e%20arquiteta)%20da%20MP%20sobre%20meu%20projeto."
+           target="_blank" rel="noopener">Conversar com os responsáveis técnicos</a>
+      </div>
+
+      <div class="team">
+
+        <!-- ---------- BLOCO 1 · ENGENHARIA (CREA-MS) ---------- -->
+        <p class="team-group-label">Engenharia · CREA-MS</p>
+
+        <!-- Para trocar uma foto, substitua o arquivo em assets/img/ mantendo o nome. -->
+        <article class="member">
+          <img class="avatar" src="assets/img/equipe-matheus.jpg" alt="Matheus Victor Ferreira Barbosa" width="68" height="68" loading="lazy">
+          <div class="member-body">
+            <h3>Matheus Victor Ferreira Barbosa</h3>
+            <p class="member-role">Engenheiro Civil · Responsável Técnico</p>
+            <p class="member-crea">CREA 67721-MS</p>
+            <ul class="member-edu">
+              <li>Pós-graduação em Gestão de Projetos e Análise de Obras em BIM</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="member">
+          <img class="avatar" src="assets/img/equipe-pedro.jpg" alt="Pedro Augusto Caldeira" width="68" height="68" loading="lazy">
+          <div class="member-body">
+            <h3>Pedro Augusto Caldeira</h3>
+            <p class="member-role">Engenheiro Civil · Responsável Técnico</p>
+            <p class="member-crea">CREA 70662-MS</p>
+            <!-- PÓS-GRADUAÇÃO DO PEDRO · a informar.
+                 Quando tiver o dado, descomente o bloco abaixo e escreva a formação:
+            <ul class="member-edu">
+              <li>Pós-graduação em ______</li>
+            </ul>
+            -->
+          </div>
+        </article>
+
+        <!-- ---------- BLOCO 2 · ARQUITETURA E INTERIORES (CAU-MS) ---------- -->
+        <p class="team-group-label">Arquitetura e Interiores · CAU-MS</p>
+
+        <article class="member">
+          <img class="avatar" src="assets/img/equipe-monica.jpg" alt="Monica Augusta Caldeira, arquiteta responsavel da MP Engenharia" width="68" height="68" loading="lazy">
+          <div class="member-body">
+            <h3>Monica Augusta Caldeira</h3>
+            <p class="member-role">Arquiteta e Urbanista · Responsável Técnica</p>
+            <p class="member-crea">CAU A326089-5</p>
+            <ul class="member-edu">
+              <li>Design de Interiores</li>
+              <li>Pós-graduação em Neuroarquitetura</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="team-note">
+          <!-- CONFIRMAR com a arquiteta responsável a divisão exata entre RRT (CAU) e ART (CREA). -->
+          <p><strong>Registro ativo no CREA-MS e no CAU-MS.</strong> O projeto arquitetônico recebe
+             RRT (Registro de Responsabilidade Técnica, CAU) e a execução recebe ART (CREA) — os
+             documentos que garantem, por lei, um responsável técnico respondendo pelo seu imóvel.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     E2. DESIGN DE INTERIORES
+     ------------------------------------------------------------
+     Seção da arquiteta (CAU + Neuroarquitetura). Fundo escuro de
+     propósito: foto de interior rende muito mais no escuro e
+     mantém a alternância claro/escuro da página.
+     Cada card tem um marcador de imagem (.int-media) — para
+     publicar uma foto, cole um <img> dentro dele que ele cobre o
+     marcador sozinho.
+     ============================================================ -->
+<section class="section section-ink" id="interiores">
+  <div class="shell">
+    <header class="section-head">
+      <p class="eyebrow light"><span class="tick"></span> 04 · Design de interiores</p>
+      <h2 class="section-title">
+        A casa não termina na planta.<br>
+        <span class="muted-title">Ela termina em como você vive dentro dela.</span>
+      </h2>
+      <p class="section-lead">
+        Projeto de interiores assinado por arquiteta registrada no CAU, com pós-graduação em
+        Neuroarquitetura — a área que estuda como o ambiente construído afeta o humor, o sono
+        e a concentração de quem mora nele. E, por estar dentro de um escritório que também faz
+        engenharia, o detalhamento de interiores já nasce compatibilizado com a elétrica, a
+        hidráulica e a estrutura. Nada de descobrir na obra que a tomada da bancada não existe.
+      </p>
+    </header>
+
+    <div class="int-grid">
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-layout.jpg" alt="Estudo de layout de ambientes" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 4h18v16H3z M3 12h9 M12 4v16 M15.5 15.5h3 M15.5 18h3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">01</span>
+          <h3>Layout e ergonomia dos ambientes</h3>
+          <p>Onde cada móvel encosta, por onde se caminha, quanto espaço sobra para abrir uma
+             porta de armário. O metro quadrado rende quando o layout é estudado antes da parede subir.</p>
+        </div>
+      </article>
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-marcenaria.jpg" alt="Detalhamento de marcenaria sob medida" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 3h16v18H4z M4 9h16 M4 15h16 M11 5.6h2 M11 11.6h2 M11 17.6h2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">02</span>
+          <h3>Marcenaria e detalhamento sob medida</h3>
+          <p>Desenho executivo de cada peça — cozinha, closet, painel, bancada — com medidas,
+             materiais e ferragens especificadas. O marceneiro executa, não improvisa.</p>
+        </div>
+      </article>
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-iluminacao.jpg" alt="Projeto de iluminação de interiores" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 17h6 M10 20h4 M12 3a6 6 0 0 1 3.5 10.9V17h-7v-3.1A6 6 0 0 1 12 3z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">03</span>
+          <h3>Projeto de iluminação</h3>
+          <p>Luz de trabalho, luz de convívio e luz cênica em circuitos separados, com
+             temperatura de cor definida ambiente a ambiente. É o que separa uma sala aconchegante
+             de uma sala de repartição pública.</p>
+        </div>
+      </article>
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-materiais.jpg" alt="Paleta de materiais e revestimentos" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 4h8v8H3z M13 4h8v8h-8z M3 14h8v6H3z M13 14h8v6h-8z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">04</span>
+          <h3>Materiais, revestimentos e paleta</h3>
+          <p>Porcelanato, madeira, pedra, tinta e tecido escolhidos como um conjunto — e
+             especificados por nome, marca e referência, para você comprar sem adivinhar.</p>
+        </div>
+      </article>
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-neuroarquitetura.jpg" alt="Ambiente projetado com princípios de neuroarquitetura" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4.2a3.2 3.2 0 0 0-5.6 2.1A3 3 0 0 0 5 11.4a3 3 0 0 0 1.7 4.8A3 3 0 0 0 12 19zM12 4.2a3.2 3.2 0 0 1 5.6 2.1A3 3 0 0 1 19 11.4a3 3 0 0 1-1.7 4.8A3 3 0 0 1 12 19z M12 4.2V19" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">05</span>
+          <h3>Neuroarquitetura: o conforto que se sente</h3>
+          <p>Luz natural, pé-direito, cor, acústica e vista influenciam sono, humor e foco.
+             A pós-graduação da nossa arquiteta é exatamente nisso: projetar o efeito que o
+             ambiente causa em quem vive nele, não só a aparência dele.</p>
+        </div>
+      </article>
+
+      <article class="int-card">
+        <div class="int-media">
+          <!-- IMAGEM · cole um <img> aqui. Ex.: <img src="assets/img/int-compatibilizacao.jpg" alt="Compatibilização de interiores com projetos complementares" loading="lazy" width="1200" height="900"> -->
+          <svg class="int-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 5h6v6H5z M13 13h6v6h-6z M11 8h4a2 2 0 0 1 2 2v3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="int-card-body">
+          <span class="int-num">06</span>
+          <h3>Compatibilizado com elétrica, hidráulica e estrutura</h3>
+          <p>A vantagem de ter engenharia e arquitetura na mesma casa: ponto de tomada, sifão,
+             infra de ar-condicionado e viga são resolvidos no papel, junto com o interior —
+             e não no grito, com a obra em andamento.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="int-cta">
+      <p>
+        Já tem a planta pronta e quer cuidar do interior? Ou quer projetar as duas coisas de
+        uma vez? Fale direto com a arquiteta responsável.
+      </p>
+      <a class="btn btn-wa"
+         href="https://wa.me/5567984180024?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Gostaria%20de%20falar%20sobre%20projeto%20de%20design%20de%20interiores%20(ambientes%3A%20______)."
+         target="_blank" rel="noopener">Falar sobre meu projeto de interiores</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
      G2. ANATOMIA DO PROJETO ARQUITETÔNICO
      ------------------------------------------------------------
      Seção SEM número: descreve O QUE COMPÕE o projeto entregue.
@@ -960,7 +1253,7 @@
 <section class="section section-ink" id="projetos">
   <div class="shell">
     <header class="section-head">
-      <p class="eyebrow light"><span class="tick"></span> 03 · Projetos e obras</p>
+      <p class="eyebrow light"><span class="tick"></span> 05 · Projetos e obras</p>
       <h2 class="section-title">Do render 3D ao imóvel construído.</h2>
       <p class="section-lead">
         Você aprova o projeto vendo exatamente como ele vai ficar. Depois, acompanha a obra
@@ -1038,7 +1331,7 @@
        ---------------------------------------------------------- -->
   <div class="shell">
     <header class="section-head quotes-head">
-      <p class="eyebrow light"><span class="tick"></span> 04 · O que dizem nossos clientes</p>
+      <p class="eyebrow light"><span class="tick"></span> 06 · O que dizem nossos clientes</p>
       <h2 class="section-title">Avaliações reais, publicadas no Google.</h2>
       <p class="section-lead">
         Nada de depoimento inventado. Abaixo estão comentários de clientes que contrataram
@@ -1171,133 +1464,6 @@
 </section>
 
 <!-- ============================================================
-     E. SOBRE NÓS E AUTORIDADE TÉCNICA
-     ============================================================ -->
-<section class="section section-paper" id="sobre">
-  <div class="shell">
-    <div class="about-grid">
-
-      <div class="about-copy">
-        <p class="eyebrow"><span class="tick"></span> 05 · Quem assina a sua obra</p>
-        <h2 class="section-title">
-          Dois engenheiros e uma arquiteta, uma mesma exigência:<br>
-          <span class="muted-title">obra bem feita se acompanha de perto.</span>
-        </h2>
-        <p>
-          A MP Engenharia e Projetos nasceu em Campo Grande, em 2021, da inconformidade de dois
-          engenheiros civis com o padrão que viam no mercado: projetos entregues por e-mail
-          e nunca mais revisitados, obras tocadas sem responsável técnico presente e clientes
-          descobrindo problemas tarde demais.
-        </p>
-        <p>
-          Decidimos construir o oposto disso. Um escritório que desenha, aprova, orça, executa
-          e entrega — assinando cada etapa com CREA e CAU e estando fisicamente no canteiro
-          para responder por cada decisão tomada.
-        </p>
-        <p>
-          De lá para cá foram mais de 100 projetos e mais de 90 clientes atendidos —
-          famílias que constroem a primeira casa, empresários que abrem lojas e indústrias
-          que ampliam sua planta. A base é Campo Grande e o interior de Mato Grosso do Sul,
-          mas já projetamos para Minas Gerais, Rio de Janeiro, São Paulo e Bahia.
-          Muda a escala e muda o endereço, não muda o cuidado.
-        </p>
-
-        <a class="btn btn-dark"
-           href="https://wa.me/5567984180024?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Gostaria%20de%20conversar%20com%20os%20respons%C3%A1veis%20t%C3%A9cnicos%20(engenheiros%20e%20arquiteta)%20da%20MP%20sobre%20meu%20projeto."
-           target="_blank" rel="noopener">Conversar com os responsáveis técnicos</a>
-      </div>
-
-      <div class="team">
-        <!-- Para trocar uma foto, substitua o arquivo em assets/img/ mantendo o nome. -->
-        <article class="member">
-          <img class="avatar" src="assets/img/equipe-matheus.jpg" alt="Matheus Victor Ferreira Barbosa" width="68" height="68" loading="lazy">
-          <div class="member-body">
-            <h3>Matheus Victor Ferreira Barbosa</h3>
-            <p class="member-role">Engenheiro Civil · Responsável Técnico</p>
-            <p class="member-crea">CREA 67721-MS</p>
-          </div>
-        </article>
-
-        <article class="member">
-          <img class="avatar" src="assets/img/equipe-monica.jpg" alt="Monica Augusta Caldeira, arquiteta responsavel da MP Engenharia" width="68" height="68" loading="lazy">
-          <div class="member-body">
-            <h3>Monica Augusta Caldeira</h3>
-            <p class="member-role">Arquiteta e Urbanista · Responsável Técnica</p>
-            <p class="member-crea">CAU A326089-5</p>
-          </div>
-        </article>
-
-        <article class="member">
-          <img class="avatar" src="assets/img/equipe-pedro.jpg" alt="Pedro Augusto Caldeira" width="68" height="68" loading="lazy">
-          <div class="member-body">
-            <h3>Pedro Augusto Caldeira</h3>
-            <p class="member-role">Engenheiro Civil · Responsável Técnico</p>
-            <p class="member-crea">CREA 70662-MS</p>
-          </div>
-        </article>
-
-        <div class="team-note">
-          <!-- CONFIRMAR com a arquiteta responsável a divisão exata entre RRT (CAU) e ART (CREA). -->
-          <p><strong>Registro ativo no CREA-MS e no CAU-MS.</strong> O projeto arquitetônico recebe
-             RRT (Registro de Responsabilidade Técnica, CAU) e a execução recebe ART (CREA) — os
-             documentos que garantem, por lei, um responsável técnico respondendo pelo seu imóvel.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     F. DIFERENCIAIS
-     ============================================================ -->
-<section class="section section-ink" id="diferenciais">
-  <div class="shell">
-    <header class="section-head">
-      <p class="eyebrow light"><span class="tick"></span> 06 · Nossos diferenciais</p>
-      <h2 class="section-title">O que muda quando o responsável técnico está por perto.</h2>
-    </header>
-
-    <div class="diff-grid">
-      <article class="diff diff-hero">
-        <p class="diff-tag">O principal</p>
-        <h3>Acompanhamento de Perto</h3>
-        <p>
-          Nossos engenheiros estão no canteiro de obras — não apenas no papel. Visitas técnicas
-          regulares, conferência de execução contra o projeto, correção de rumo antes que o erro
-          vire concreto curado e um canal direto no WhatsApp com quem realmente decide.
-        </p>
-        <p class="diff-strong">Você fala com o engenheiro ou a arquiteta. Não com um intermediário.</p>
-      </article>
-
-      <article class="diff">
-        <h3>Orçamento com quantitativo</h3>
-        <p>Cada item levantado a partir do projeto executivo. Você sabe o que está pagando,
-           por quê, e o que acontece se decidir mudar algo no meio do caminho.</p>
-      </article>
-
-      <article class="diff">
-        <h3>Cronograma que se cumpre</h3>
-        <p>Planejamento físico-financeiro com etapas, medições e prazos definidos antes do
-           primeiro dia de obra — e revisado a cada visita técnica.</p>
-      </article>
-
-      <article class="diff">
-        <h3>Burocracia resolvida aqui</h3>
-        <p>Prefeitura, Bombeiros, concessionárias, cartório, Habite-se e dossiê de FCO.
-           Conhecemos os trâmites de Campo Grande e cuidamos deles por você.</p>
-      </article>
-
-      <article class="diff">
-        <h3>Um único responsável</h3>
-        <p>Projeto, complementares, aprovação e execução sob CREA e CAU. Sem terceirização
-           de culpa quando algo precisa ser resolvido.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      G. ETAPAS DE ATENDIMENTO
      ============================================================ -->
 <section class="section section-paper" id="etapas">
@@ -1360,6 +1526,55 @@
 </section>
 
 <!-- ============================================================
+     F. DIFERENCIAIS
+     ============================================================ -->
+<section class="section section-ink" id="diferenciais">
+  <div class="shell">
+    <header class="section-head">
+      <p class="eyebrow light"><span class="tick"></span> 08 · Nossos diferenciais</p>
+      <h2 class="section-title">O que muda quando o responsável técnico está por perto.</h2>
+    </header>
+
+    <div class="diff-grid">
+      <article class="diff diff-hero">
+        <p class="diff-tag">O principal</p>
+        <h3>Acompanhamento de Perto</h3>
+        <p>
+          Nossos engenheiros estão no canteiro de obras — não apenas no papel. Visitas técnicas
+          regulares, conferência de execução contra o projeto, correção de rumo antes que o erro
+          vire concreto curado e um canal direto no WhatsApp com quem realmente decide.
+        </p>
+        <p class="diff-strong">Você fala com o engenheiro ou a arquiteta. Não com um intermediário.</p>
+      </article>
+
+      <article class="diff">
+        <h3>Orçamento com quantitativo</h3>
+        <p>Cada item levantado a partir do projeto executivo. Você sabe o que está pagando,
+           por quê, e o que acontece se decidir mudar algo no meio do caminho.</p>
+      </article>
+
+      <article class="diff">
+        <h3>Cronograma que se cumpre</h3>
+        <p>Planejamento físico-financeiro com etapas, medições e prazos definidos antes do
+           primeiro dia de obra — e revisado a cada visita técnica.</p>
+      </article>
+
+      <article class="diff">
+        <h3>Burocracia resolvida aqui</h3>
+        <p>Prefeitura, Bombeiros, concessionárias, cartório, Habite-se e dossiê de FCO.
+           Conhecemos os trâmites de Campo Grande e cuidamos deles por você.</p>
+      </article>
+
+      <article class="diff">
+        <h3>Um único responsável</h3>
+        <p>Projeto, complementares, aprovação e execução sob CREA e CAU. Sem terceirização
+           de culpa quando algo precisa ser resolvido.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      INTERLÚDIO EM VÍDEO · A ENTREGA
      Vídeo em loop contínuo (assets/video/entrega.mp4) com efeito
      de paralaxe suave no scroll. Fecha a narrativa: o hero mostra
@@ -1398,7 +1613,7 @@
 <section class="section section-paper" id="faq">
   <div class="shell shell-narrow">
     <header class="section-head">
-      <p class="eyebrow"><span class="tick"></span> 08 · Perguntas frequentes</p>
+      <p class="eyebrow"><span class="tick"></span> 09 · Perguntas frequentes</p>
       <h2 class="section-title">Dúvidas que recebemos toda semana.</h2>
     </header>
 
@@ -1594,6 +1809,7 @@
         <ul>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#interiores">Design de interiores</a></li>
           <li><a href="#diferenciais">Diferenciais</a></li>
           <li><a href="#etapas">Como trabalhamos</a></li>
           <li><a href="#projetos">Projetos e obras</a></li>
@@ -1606,6 +1822,7 @@
         <ul>
           <li><a href="#servicos">Projetos arquitetônicos</a></li>
           <li><a href="#servicos">Projetos complementares</a></li>
+          <li><a href="#interiores">Design de interiores</a></li>
           <li><a href="#servicos">Construção residencial</a></li>
           <li><a href="#servicos">Obras comerciais</a></li>
           <li><a href="#servicos">Obras industriais e rurais</a></li>
