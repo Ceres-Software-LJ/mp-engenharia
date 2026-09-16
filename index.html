@@ -12,7 +12,7 @@
 <meta name="keywords" content="engenharia civil Campo Grande, engenheiro civil Campo Grande MS, projeto arquitetônico Campo Grande, construtora Campo Grande MS, Habite-se Campo Grande, regularização de imóvel Campo Grande, financiamento FCO Mato Grosso do Sul, projeto estrutural Campo Grande, galpão industrial Campo Grande, edícula Campo Grande, arquiteta CAU Campo Grande, arquitetura residencial alto padrão, projeto de interiores Campo Grande">
 <meta name="author" content="MP Engenharia e Projetos">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.mpengenhariaeprojetos.com.br/">
+<link rel="canonical" href="https://www.mp-engenhariaarquitetura.com.br/">
 <meta name="theme-color" content="#111111">
 
 <!-- Open Graph / WhatsApp / Facebook -->
@@ -21,16 +21,17 @@
 <meta property="og:site_name" content="MP Engenharia e Projetos">
 <meta property="og:title" content="Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia">
 <meta property="og:description" content="O engenheiro que assina seu projeto é o mesmo que aparece na sua obra. Projeto, Habite-se, FCO e execução em Campo Grande - MS, sob CREA e CAU.">
-<meta property="og:url" content="https://www.mpengenhariaeprojetos.com.br/">
+<meta property="og:url" content="https://www.mp-engenhariaarquitetura.com.br/">
 <!-- TROQUE pela imagem de compartilhamento (1200x630px) -->
-<meta property="og:image" content="https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg">
+<meta property="og:image" content="https://www.mp-engenhariaarquitetura.com.br/assets/img/og-mp-engenharia.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Residência de alto padrão projetada pela MP Engenharia e Projetos em Campo Grande - MS">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia">
 <meta name="twitter:description" content="Projeto, Habite-se, crédito FCO e execução de obras em Campo Grande - MS, sob CREA e CAU.">
-<meta name="twitter:image" content="https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg">
+<meta name="twitter:image" content="https://www.mp-engenhariaarquitetura.com.br/assets/img/og-mp-engenharia.jpg">
+<meta name="twitter:image:alt" content="Residência de alto padrão projetada pela MP Engenharia e Projetos em Campo Grande - MS">
 
 <!-- Sinais geográficos. Não são fator de ranqueamento no Google, mas são
      lidos por agregadores e por alguns rastreadores de IA para confirmar
@@ -43,9 +44,15 @@
 <!-- Resumo do negócio para rastreadores de IA (ver /llms.txt) -->
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo para assistentes de IA">
 
-<!-- Favicon -->
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/logo-mp-dark.png">
+<!-- Favicons · gerados a partir do arquivo "logo favicon.jpg".
+     Ficam na raiz do site porque navegadores e o Google procuram o
+     /favicon.ico ali por padrão. O Google só exibe na busca ícones em
+     múltiplos de 48px: o favicon.ico (16/32/48) e o 96x96 cobrem isso. -->
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 <!-- ============================================================
      TIPOGRAFIA · hospedada no próprio projeto
@@ -53,6 +60,15 @@
      servidor externo no caminho crítico. Para regenerar os arquivos,
      veja a seção "Fontes" no LEIA-ME.
      ============================================================ -->
+
+<!-- PRÉ-CARREGAMENTO DO MAIOR ELEMENTO DA TELA (LCP)
+     1) Fonte do título principal (Outfit). No celular o LCP é o H1, e sem
+        o preload essa fonte só seria descoberta depois de baixar o CSS.
+     2) Foto de fundo do topo, SÓ a partir de 760px (atributo media). No
+        celular ela não é usada (ver .hero-media no style.css) e não pode
+        ser baixada — foi isso que derrubou o LCP mobile de 4,1s para 2,6s. -->
+<link rel="preload" href="assets/fonts/outfit-300-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-poster.jpg" as="image" media="(min-width: 760px)" fetchpriority="high">
 
 <link rel="stylesheet" href="assets/css/style.css">
 
@@ -71,35 +87,37 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#site",
-      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#site",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/",
       "name": "MP Engenharia e Projetos",
       "inLanguage": "pt-BR",
       "publisher": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
       }
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#pagina",
-      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#pagina",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/",
       "name": "Engenharia Civil e Arquitetura em Campo Grande - MS | MP Engenharia",
       "description": "Projeto arquitetônico, projetos complementares, aprovação na prefeitura, Habite-se, regularização e execução de obras em Campo Grande - MS, sob a mesma responsabilidade técnica.",
       "isPartOf": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#site"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#site"
       },
       "about": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
       },
       "primaryImageOfPage": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#imagem"
       },
-      "inLanguage": "pt-BR"
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-08-26",
+      "dateModified": "2026-09-16"
     },
     {
       "@type": "ImageObject",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem",
-      "url": "https://www.mpengenhariaeprojetos.com.br/assets/img/og-mp-engenharia.jpg",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#imagem",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/assets/img/og-mp-engenharia.jpg",
       "width": 1200,
       "height": 630,
       "caption": "Residência de alto padrão projetada pela MP Engenharia e Projetos em Campo Grande - MS"
@@ -109,24 +127,41 @@
         "GeneralContractor",
         "ProfessionalService"
       ],
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa",
       "name": "MP Engenharia e Projetos",
       "alternateName": "MP Engenharia",
-      "description": "Escritório de engenharia civil e arquitetura em Campo Grande - MS. Faz projeto arquitetônico, projetos complementares, aprovação na prefeitura, Habite-se, regularização de imóveis, dossiê técnico para crédito FCO e execução de obras residenciais, comerciais e industriais, tudo sob a mesma responsabilidade técnica registrada no CREA-MS.",
+      "description": "Escritório de engenharia civil e arquitetura em Campo Grande - MS. Faz projeto arquitetônico, design de interiores, projetos complementares, aprovação na prefeitura, Habite-se, regularização de imóveis, dossiê técnico para crédito FCO e execução de obras residenciais, comerciais e industriais, tudo sob a mesma responsabilidade técnica registrada no CREA-MS e no CAU-MS.",
       "slogan": "O engenheiro que assina seu projeto é o mesmo que aparece na sua obra.",
-      "url": "https://www.mpengenhariaeprojetos.com.br/",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/",
       "logo": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#logo"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#logo"
       },
       "image": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#imagem"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#imagem"
       },
       "telephone": [
         "+5567984180026",
         "+5567984180024"
       ],
       "email": "eng.projetosmp@gmail.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "Atendimento de engenharia (projetos complementares, obras, Habite-se, regularização e FCO)",
+          "telephone": "+5567984180026",
+          "areaServed": "BR",
+          "availableLanguage": "Portuguese"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "Atendimento de arquitetura e design de interiores",
+          "telephone": "+5567984180024",
+          "areaServed": "BR",
+          "availableLanguage": "Portuguese"
+        }
+      ],
       "foundingDate": "2021",
+      "taxID": "57.343.844/0001-52",
       "currenciesAccepted": "BRL",
       "address": {
         "@type": "PostalAddress",
@@ -136,6 +171,21 @@
         "postalCode": "79002-010",
         "addressCountry": "BR"
       },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=R.%20Arnaldo%20Serra%2C%208%20-%20Vila%20Carvalho%2C%20Campo%20Grande%20-%20MS%2C%2079002-010",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
       "areaServed": [
         {
           "@type": "City",
@@ -190,20 +240,24 @@
         "Construção residencial",
         "Obra comercial",
         "Obra industrial",
-        "ART - Anotação de Responsabilidade Técnica"
+        "ART - Anotação de Responsabilidade Técnica",
+        "Design de interiores",
+        "Neuroarquitetura",
+        "BIM (Building Information Modeling)",
+        "RRT - Registro de Responsabilidade Técnica"
       ],
       "sameAs": [
         "https://www.instagram.com/mp__engenharia"
       ],
       "employee": [
         {
-          "@id": "https://www.mpengenhariaeprojetos.com.br/#matheus"
+          "@id": "https://www.mp-engenhariaarquitetura.com.br/#matheus"
         },
         {
-          "@id": "https://www.mpengenhariaeprojetos.com.br/#monica"
+          "@id": "https://www.mp-engenhariaarquitetura.com.br/#monica"
         },
         {
-          "@id": "https://www.mpengenhariaeprojetos.com.br/#pedro"
+          "@id": "https://www.mp-engenhariaarquitetura.com.br/#pedro"
         }
       ],
       "hasOfferCatalog": {
@@ -219,7 +273,7 @@
               "description": "Estudo de viabilidade do terreno, planta baixa, cortes, fachadas e aprovação junto aos órgãos competentes de Campo Grande - MS.",
               "serviceType": "Projeto Arquitetônico e Aprovação na Prefeitura",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -236,7 +290,7 @@
               "description": "Cálculo estrutural dimensionado, projeto elétrico e de iluminação, hidráulico, esgoto e águas pluviais, compatibilizados entre si.",
               "serviceType": "Projetos Complementares: Estrutural, Elétrico e Hidráulico",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -253,7 +307,7 @@
               "description": "Projeto de design de interiores assinado por arquiteta registrada no CAU-MS com pós-graduação em Neuroarquitetura: layout e ergonomia dos ambientes, marcenaria sob medida, projeto de iluminação, especificação de materiais e revestimentos, compatibilizado com os projetos elétrico, hidráulico e estrutural.",
               "serviceType": "Design de Interiores",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -270,7 +324,7 @@
               "description": "Execução de casas térreas, sobrados, edículas, área gourmet, piscina, reformas e ampliações estruturais em Campo Grande - MS.",
               "serviceType": "Construção Residencial e Edículas",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -287,7 +341,7 @@
               "description": "Construção de lojas, salas, centros comerciais e edifícios de múltiplos pavimentos, com adequação a normas e acessibilidade.",
               "serviceType": "Obras Comerciais: Lojas e Edifícios",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -304,7 +358,7 @@
               "description": "Galpões, barracões e ampliações industriais em estrutura metálica ou pré-moldados, com pisos de alta resistência e docas.",
               "serviceType": "Obras Industriais e Galpões",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -321,7 +375,7 @@
               "description": "Regularização e averbação de imóveis, emissão de Habite-se, alvarás de construção e dossiê técnico exigido pelos bancos no financiamento FCO.",
               "serviceType": "Regularização, Habite-se e Crédito FCO",
               "provider": {
-                "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+                "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
               },
               "areaServed": {
                 "@type": "City",
@@ -334,21 +388,23 @@
     },
     {
       "@type": "ImageObject",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#logo",
-      "url": "https://www.mpengenhariaeprojetos.com.br/assets/img/logo-mp-dark.png",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#logo",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/assets/img/logo-mp-dark.png",
       "width": 220,
       "height": 185,
       "caption": "Logotipo da MP Engenharia e Projetos"
     },
     {
       "@type": "Person",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#matheus",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#matheus",
       "name": "Matheus Victor Ferreira Barbosa",
       "givenName": "Matheus",
       "familyName": "Ferreira Barbosa",
       "jobTitle": "Engenheiro Civil",
+      "image": "https://www.mp-engenhariaarquitetura.com.br/assets/img/equipe-matheus.jpg",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/#sobre",
       "worksFor": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
       },
       "knowsAbout": [
         "Gestão de projetos",
@@ -375,13 +431,15 @@
     },
     {
       "@type": "Person",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#pedro",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#pedro",
       "name": "Pedro Augusto Caldeira",
       "givenName": "Pedro",
       "familyName": "Caldeira",
       "jobTitle": "Engenheiro Civil",
+      "image": "https://www.mp-engenhariaarquitetura.com.br/assets/img/equipe-pedro.jpg",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/#sobre",
       "worksFor": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
       },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
@@ -396,14 +454,16 @@
     },
     {
       "@type": "Person",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#monica",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#monica",
       "name": "Monica Augusta Caldeira",
       "givenName": "Monica",
       "additionalName": "Augusta",
       "familyName": "Caldeira",
       "jobTitle": "Arquiteta e Urbanista",
+      "image": "https://www.mp-engenhariaarquitetura.com.br/assets/img/equipe-monica.jpg",
+      "url": "https://www.mp-engenhariaarquitetura.com.br/#sobre",
       "worksFor": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#empresa"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#empresa"
       },
       "knowsAbout": [
         "Arquitetura e urbanismo",
@@ -435,9 +495,9 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.mpengenhariaeprojetos.com.br/#faq",
+      "@id": "https://www.mp-engenhariaarquitetura.com.br/#faq",
       "isPartOf": {
-        "@id": "https://www.mpengenhariaeprojetos.com.br/#pagina"
+        "@id": "https://www.mp-engenhariaarquitetura.com.br/#pagina"
       },
       "inLanguage": "pt-BR",
       "mainEntity": [
@@ -591,6 +651,8 @@
   </div>
 </header>
 
+<main>
+
 <!-- ============================================================
      B. HERO
      VÍDEO DE FUNDO · assets/video/hero-obra.mp4
@@ -602,8 +664,9 @@
 <section class="hero" id="hero" aria-label="Apresentação">
   <div class="hero-media" aria-hidden="true">
     <!-- O vídeo só começa a baixar depois da primeira pintura da tela.
-         Até lá aparece o poster, que já vem pré-carregado. Isso libera
-         banda para o texto e o CSS, e melhora a nota de velocidade. -->
+         Até lá, no desktop aparece a foto de fundo (pré-carregada no <head>
+         só para telas a partir de 760px); no celular fica o gradiente.
+         Isso libera banda para o texto e o CSS e melhora a nota de velocidade. -->
     <video class="hero-video" muted loop playsinline preload="none"
            data-lazy-video="assets/video/hero-obra.mp4"
            data-lazy-video-mobile="assets/video/hero-obra-mobile.mp4"></video>
@@ -1779,6 +1842,8 @@
     </a>
   </div>
 </section>
+
+</main>
 
 <!-- ============================================================
      J. RODAPÉ

@@ -70,4 +70,4 @@ Allow: /
 # Arquivos de apoio
 # ============================================================
 # Resumo legível por IA: /llms.txt
-Sitemap: https://www.mpengenhariaeprojetos.com.br/sitemap.xml
+Sitemap: https://www.mp-engenhariaarquitetura.com.br/sitemap.xml

@@ -169,6 +169,25 @@ Quem tiver uma pós-graduação nova também deve ganhar a entrada correspondent
 no bloco `application/ld+json` do topo do `index.html` (campo `hasCredential`),
 que é o que os buscadores leem.
 
+### Favicons (ícone da aba e da busca do Google)
+Ficam na **raiz** do site: `favicon.ico` (16/32/48), `favicon-16x16.png`,
+`favicon-32x32.png`, `favicon-96x96.png` e `apple-touch-icon.png` (180x180).
+Foram gerados a partir de `logo favicon.jpg`, que tem só 150x150 — por isso o
+de 180 fica levemente suave. Com uma arte quadrada de 512x512 ou mais, gere de
+novo (troque `ARTE.png` pelo arquivo):
+
+```bash
+for s in 16 32 96; do ffmpeg -y -i ARTE.png -vf "scale=$s:$s:flags=lanczos" favicon-${s}x${s}.png; done
+ffmpeg -y -i ARTE.png -vf "scale=180:180:flags=lanczos" apple-touch-icon.png
+ffmpeg -y -i ARTE.png -vf "scale=48:48:flags=lanczos" favicon-48x48.png
+```
+
+O `favicon.ico` junta 16, 32 e 48 num arquivo só. Para montá-lo, use o
+ImageMagick (`magick favicon-16x16.png favicon-32x32.png favicon-48x48.png favicon.ico`)
+ou o site realfavicongenerator.net. Em ícone de 16px texto
+pequeno não é legível: para essa medida, o ideal é uma versão só com o
+monograma MP.
+
 ### Adicionar uma avaliação
 Copie um bloco `<figure class="quote">` inteiro para dentro de uma das
 `<div class="marquee-track">` e troque o texto, o nome e a legenda.
@@ -219,7 +238,7 @@ grep -n "CONFIRMAR" index.html
 
 | # | Item | Onde |
 |---|------|------|
-| 1 | **Domínio real** nas tags de SEO | `index.html` → `canonical` e `og:url`; também em `robots.txt` e `sitemap.xml` |
+| 1 | ✅ **Domínio real** nas tags de SEO | Feito: `https://www.mp-engenhariaarquitetura.com.br/` em `index.html`, `robots.txt`, `sitemap.xml` e `llms.txt` |
 | 2 | **Link do Google Meu Negócio** | Aparece em **dois** lugares: faixa de prova social e seção de avaliações |
 | 3 | **Logo em vetor** (SVG ou PDF) | O logo atual foi extraído de um JPG de 150×150. Funciona, mas um SVG renderiza mais nítido — veja abaixo |
 | 4 | **Fotos dos engenheiros** | Hoje aparecem as iniciais num quadrado. Em negócio de confiança, foto de rosto converte |
@@ -372,14 +391,17 @@ Para conferir depois de publicar:
 1. **Google Meu Negócio** é o fator número um para busca local — mais do que
    qualquer coisa no site. Perfil completo, com fotos, horário e categoria
    "Engenheiro civil" ou "Empreiteiro".
-2. **Endereço com rua e número.** O schema hoje declara só cidade e estado.
-   Com o endereço completo, a marcação fica elegível a mais recursos de busca
-   local. Se a empresa não atende no local, é possível usar "área de
-   atendimento" no Google Meu Negócio sem expor o endereço.
-3. **Trocar o domínio** em `index.html` (canonical, og:url e todo o JSON-LD),
-   `robots.txt`, `sitemap.xml` e `llms.txt`.
-4. **Nota média das avaliações** no schema. Só depois de confirmar o número
-   real no perfil do Google — marcação de avaliação sem lastro é penalizada.
+2. ✅ **Endereço com rua e número** — feito: está no rodapé, no schema e no
+   `llms.txt`.
+3. ✅ **Domínio** — feito: `https://www.mp-engenhariaarquitetura.com.br/`.
+4. **Nota das avaliações no schema: NÃO adicionar.** As avaliações são do
+   Google, e as diretrizes do Google proíbem marcar com `aggregateRating`
+   avaliações coletadas em outro site; além disso, empresa local não ganha
+   estrelas por avaliação sobre si mesma. As estrelas aparecem sozinhas no
+   perfil do Google Meu Negócio.
+5. ✅ **Horário e CNPJ** — feito: `openingHoursSpecification` (seg a sex,
+   08:00–18:00) e `taxID` no schema, e os dois no `llms.txt`. Se o
+   atendimento incluir sábado, acrescente "Saturday" em `dayOfWeek`.
 
 ### Sobre as palavras-chave
 
