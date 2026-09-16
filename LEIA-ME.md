@@ -287,7 +287,7 @@ Para usar domínio próprio: **Settings → Domains** no painel do Vercel.
 
 1. Cadastre o site no [Google Search Console](https://search.google.com/search-console)
 2. Vincule o perfil do **Google Meu Negócio** (é de lá que vêm as avaliações)
-3. Coloque o link na bio do Instagram [@mp__engenharia](https://www.instagram.com/mp__engenharia)
+3. Coloque o link na bio do Instagram [@mp__engenharia](https://www.instagram.com/mp__engenharia/)
 
 ---
 
