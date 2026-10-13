@@ -239,7 +239,7 @@ grep -n "CONFIRMAR" index.html
 | # | Item | Onde |
 |---|------|------|
 | 1 | ✅ **Domínio real** nas tags de SEO | Feito: `https://www.mp-engenhariaarquitetura.com.br/` em `index.html`, `robots.txt`, `sitemap.xml` e `llms.txt` |
-| 2 | **Link do Google Meu Negócio** | Aparece em **dois** lugares: faixa de prova social e seção de avaliações |
+| 2 | ✅ **Link do Google Meu Negócio** | Feito: os dois botões (faixa de prova social e seção de avaliações) abrem o perfil pelo identificador `kgmid=/g/11y__mkn0b` (link oficial de compartilhamento: https://share.google/IzCvzfdl6RftkQMMg) |
 | 3 | **Logo em vetor** (SVG ou PDF) | O logo atual foi extraído de um JPG de 150×150. Funciona, mas um SVG renderiza mais nítido — veja abaixo |
 | 4 | **Fotos dos engenheiros** | Hoje aparecem as iniciais num quadrado. Em negócio de confiança, foto de rosto converte |
 | 5 | **Dados das obras da galeria** | Legendas ganham força com metragem, bairro e prazo: "Sobrado 320 m² · Carandá · entregue em 11 meses" |
